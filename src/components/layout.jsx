@@ -16,6 +16,7 @@ const PageWrapper = styled.div`
   width: 100vw;
   max-width: 600px;
   height: 100vh;
+  overflow: hidden;
   background-color: white;
 `;
 
