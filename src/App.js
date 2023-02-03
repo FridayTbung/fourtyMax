@@ -19,6 +19,7 @@ function App() {
 export default App;
 
 const AppContainer = styled.div`
+  width: 100%;
   display: flex;
   justify-content: center;
   background-color: grey;
