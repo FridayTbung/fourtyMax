@@ -15,7 +15,7 @@ const Header = () => {
 export default Header;
 
 const ComponentWrapper = styled.div`
-  height: 5vh;
+  height: 5%;
   background-color: white;
   padding: 0.5rem;
   display: flex;

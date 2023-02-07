@@ -17,7 +17,7 @@ export default ColumnBar;
 const ComponentWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
-  height: 3vh;
+  height: 5%;
   border: 1px solid black;
   div {
     display: flex;

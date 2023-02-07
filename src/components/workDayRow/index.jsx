@@ -4,7 +4,7 @@ import CheckboxInput from "./checkboxInput";
 import TimeInput from "./timeInput";
 import { parseTimeStringToSeconds } from "../../utils";
 
-const WorkDayRow = ({ day, setWorkTime }) => {
+const WorkDayRow = ({ day, setWorkTime, ...arg }) => {
   const [todayWork, setTodayWork] = useState({
     day: `${day}`,
     arriveTime: "09:00",
@@ -28,9 +28,12 @@ const WorkDayRow = ({ day, setWorkTime }) => {
       const parsedArriveTime = parseTimeStringToSeconds(todayWork.arriveTime);
       const parsedLeaveTime = parseTimeStringToSeconds(todayWork.leaveTime);
       const baseWorkTime = parsedLeaveTime - parsedArriveTime - 3600;
-      return todayWork.isBancha ? baseWorkTime + 14400 : baseWorkTime;
+      return todayWork.isBancha ? baseWorkTime + 14400 + 3600 : baseWorkTime;
     };
     setWorkTime(getTodayWorkTime());
+
+    // 금요일 퇴근 시간 얻기 이 useEffect 안에 한번에 넣어주는게 맞는지? useEffect 쪼개는 기준에 대해서 알아보자
+    if (day === "금") arg.setLeaveTime(todayWork.leaveTime);
   }, [todayWork, setWorkTime]);
 
   return (
@@ -70,6 +73,7 @@ const ComponentWrapper = styled.div`
   align-items: center;
   border: 1px solid black;
   width: cal(100% - 10px);
+  height: 3%;
 `;
 
 const Day = styled.div`

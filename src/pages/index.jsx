@@ -1,7 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
 import ColumnBar from "../components/columnBar";
+import ResultArea from "../components/resultArea";
 import WorkDayRow from "../components/workDayRow";
+import { getExecutionResult } from "../utils";
 
 const Main = () => {
   const [monWorkTime, setMonWorkTime] = useState(0);
@@ -9,6 +11,15 @@ const Main = () => {
   const [wedWorkTime, setWedWorkTime] = useState(0);
   const [thuWorkTime, setThuWorkTime] = useState(0);
   const [friWorkTime, setFriWorkTime] = useState(0);
+  const [friLeaveTime, setFriLeaveTime] = useState(0);
+  const [resultText, setResultText] = useState("");
+
+  const handleClickExcute = () => {
+    const totalWorkTime =
+      monWorkTime + tueWorkTime + wedWorkTime + thuWorkTime + friWorkTime;
+    const result = getExecutionResult(totalWorkTime, friLeaveTime);
+    setResultText(result[1]);
+  };
 
   return (
     <PageWrapper>
@@ -17,8 +28,13 @@ const Main = () => {
       <WorkDayRow day="화" setWorkTime={setTueWorkTime} />
       <WorkDayRow day="수" setWorkTime={setWedWorkTime} />
       <WorkDayRow day="목" setWorkTime={setThuWorkTime} />
-      <WorkDayRow day="금" setWorkTime={setFriWorkTime} />
-      <ExecuteBtn>계산하기</ExecuteBtn>
+      <WorkDayRow
+        day="금"
+        setWorkTime={setFriWorkTime}
+        setLeaveTime={setFriLeaveTime}
+      />
+      <ExecuteBtn onClick={handleClickExcute}>계산하기</ExecuteBtn>
+      <ResultArea result={resultText} />
     </PageWrapper>
   );
 };
@@ -35,5 +51,6 @@ const PageWrapper = styled.div`
 
 const ExecuteBtn = styled.button`
   width: cal(100% - 10px);
+  height: 5%;
   padding: 0.5rem;
 `;
