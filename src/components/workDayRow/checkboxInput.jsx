@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const CheckboxInput = ({ name, onChange, checked }) => {
+const CheckboxInput = ({ name, onChange, checked, disabled }) => {
   return (
     <CheckboxInputArea>
       <Checkbox
@@ -8,6 +8,7 @@ const CheckboxInput = ({ name, onChange, checked }) => {
         name={name}
         onChange={onChange}
         checked={checked}
+        disabled={disabled}
       />
     </CheckboxInputArea>
   );

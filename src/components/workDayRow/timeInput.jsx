@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const TimeInput = ({ name, value, onChange, disabled }) => {
+const TimeInput = ({ name, value, onChange, onKeyDown, disabled }) => {
   return (
     <WorkHourInputArea>
       <WorkHourInput

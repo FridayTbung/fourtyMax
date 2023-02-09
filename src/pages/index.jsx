@@ -34,6 +34,10 @@ const Main = () => {
         setLeaveTime={setFriLeaveTime}
       />
       <ExecuteBtn onClick={handleClickExcute}>계산하기</ExecuteBtn>
+      <ButtonGroup>
+        <ResetBtn>reset</ResetBtn>
+        <AutoBtn>auto</AutoBtn>
+      </ButtonGroup>
       <ResultArea result={resultText} />
     </PageWrapper>
   );
@@ -54,3 +58,12 @@ const ExecuteBtn = styled.button`
   height: 5%;
   padding: 0.5rem;
 `;
+
+const ButtonGroup = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
+
+const ResetBtn = styled.button``;
+
+const AutoBtn = styled.button``;

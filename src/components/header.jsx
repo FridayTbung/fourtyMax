@@ -4,10 +4,6 @@ const Header = () => {
   return (
     <ComponentWrapper>
       <ServiceTitle>금요일의 티붕이</ServiceTitle>
-      <ButtonGroup>
-        <ResetBtn>reset</ResetBtn>
-        <AutoBtn>auto</AutoBtn>
-      </ButtonGroup>
     </ComponentWrapper>
   );
 };
@@ -25,12 +21,3 @@ const ComponentWrapper = styled.div`
 `;
 
 const ServiceTitle = styled.div``;
-
-const ButtonGroup = styled.div`
-  display: flex;
-  gap: 1rem;
-`;
-
-const ResetBtn = styled.button``;
-
-const AutoBtn = styled.button``;
