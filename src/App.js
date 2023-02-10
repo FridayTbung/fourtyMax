@@ -2,7 +2,8 @@ import { Routes, Route } from "react-router-dom";
 import styled from "styled-components";
 import "./App.css";
 import Layout from "./components/layout";
-import Main from "./pages";
+import Main from "./pages/home";
+import Result from "./pages/result";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Main />} />
+          <Route path="/result" element={<Result />} />
         </Routes>
       </Layout>
     </AppContainer>

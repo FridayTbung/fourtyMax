@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ColumnBar = () => {
+const TableHead = () => {
   return (
     <ComponentWrapper>
       <DayColumn>요일</DayColumn>
@@ -12,7 +12,7 @@ const ColumnBar = () => {
   );
 };
 
-export default ColumnBar;
+export default TableHead;
 
 const ComponentWrapper = styled.div`
   display: flex;
