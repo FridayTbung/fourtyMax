@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { workState } from "../../store";
-import { isNumeric, isValidHour } from "../../utils/validation";
+import { isNumeric, isValidHour, isValidMinute } from "../../utils/validation";
 import CheckboxInput from "./checkboxInput";
 import TimeInput from "./timeInput";
 
@@ -27,7 +27,8 @@ const DayRow = ({
 
   const handleChangeMinute = (e) => {
     const { value: minute, name: inputName } = e.target;
-    if (inputName === "arriveTime" && isNumeric())
+    if (!(isNumeric(minute) && isValidMinute(minute))) return;
+    if (inputName === "arriveTime")
       workState.setArriveTime(dayCode, {
         minute,
       });
