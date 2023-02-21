@@ -3,7 +3,7 @@ import styled from "styled-components";
 import "./App.css";
 import Layout from "./components/layout";
 import Main from "./pages/home";
-import Result from "./pages/result";
+import Result from "./pages/result/result";
 
 function App() {
   return (

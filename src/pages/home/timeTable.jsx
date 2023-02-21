@@ -1,22 +1,26 @@
+import { observer } from "mobx-react";
 import styled from "styled-components";
-import { INIT_DAILY_WORK_TIMES } from ".";
 import TableHead from "../../components/tableHead";
-import WorkDayRow from "../../components/workDayRow";
+import DayRow from "../../components/dayRow";
+import { workState } from "../../store";
 
-const TimeTable = ({ dailyWorkTimes, setDailyWorkTimes }) => {
-  const handleClickResetInputs = () => {
-    setDailyWorkTimes(INIT_DAILY_WORK_TIMES);
-  };
+const TimeTable = observer(() => {
+  const workDays = workState.getWorkDays();
+  const handleClickResetInputs = () => {};
 
   return (
     <ComponentWrapper>
       <TableContainer>
         <TableHead />
-        {Object.values(dailyWorkTimes).map((todayWorkTime) => (
-          <WorkDayRow
-            key={todayWorkTime.day}
-            todayWorkTime={todayWorkTime}
-            setDailyWorkTimes={setDailyWorkTimes}
+        {workDays.map((workDay) => (
+          <DayRow
+            key={workDay.dayCode}
+            day={workDay.day}
+            dayCode={workDay.dayCode}
+            arriveTime={workDay.arriveTime}
+            leaveTime={workDay.leaveTime}
+            isBancha={workDay.isBancha}
+            isHoliday={workDay.isHoliday}
           />
         ))}
       </TableContainer>
@@ -26,7 +30,7 @@ const TimeTable = ({ dailyWorkTimes, setDailyWorkTimes }) => {
       </ButtonGroup>
     </ComponentWrapper>
   );
-};
+});
 
 export default TimeTable;
 
