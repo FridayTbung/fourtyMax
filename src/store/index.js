@@ -4,13 +4,16 @@ import {
   parseSecondsToTimeString,
 } from "../utils/time";
 
+const FOURTY_HOURS = 144000;
+
 export const workState = observable({
   mon: {
     day: "월",
     dayCode: "mon",
     arriveTime: { hour: "09", minute: "00" },
     leaveTime: { hour: "18", minute: "00" },
-    isBancha: false,
+    isBanchaAM: false,
+    isBanchaPM: false,
     isHoliday: false,
   },
   tue: {
@@ -18,7 +21,8 @@ export const workState = observable({
     dayCode: "tue",
     arriveTime: { hour: "09", minute: "00" },
     leaveTime: { hour: "18", minute: "00" },
-    isBancha: false,
+    isBanchaAM: false,
+    isBanchaPM: false,
     isHoliday: false,
   },
   wed: {
@@ -26,7 +30,8 @@ export const workState = observable({
     dayCode: "wed",
     arriveTime: { hour: "09", minute: "00" },
     leaveTime: { hour: "18", minute: "00" },
-    isBancha: false,
+    isBanchaAM: false,
+    isBanchaPM: false,
     isHoliday: false,
   },
   thu: {
@@ -34,7 +39,8 @@ export const workState = observable({
     dayCode: "thu",
     arriveTime: { hour: "09", minute: "00" },
     leaveTime: { hour: "18", minute: "00" },
-    isBancha: false,
+    isBanchaAM: false,
+    isBanchaPM: false,
     isHoliday: false,
   },
   fri: {
@@ -42,7 +48,8 @@ export const workState = observable({
     dayCode: "fri",
     arriveTime: { hour: "09", minute: "00" },
     leaveTime: { hour: "18", minute: "00" },
-    isBancha: false,
+    isBanchaAM: false,
+    isBanchaPM: false,
     isHoliday: false,
   },
 
@@ -56,16 +63,44 @@ export const workState = observable({
     this[day].leaveTime = { ...this[day].leaveTime, ...value };
   },
 
-  setIsBancha(day, value) {
-    this[day].isBancha = value;
+  setIsBanchaAM(day, value) {
+    this[day].isBanchaAM = value;
+    this[day].isBanchaPM = !value;
+  },
+
+  setIsBanchaPM(day, value) {
+    this[day].isBanchaPM = value;
+    this[day].isBanchaAM = !value;
   },
 
   setIsHoliday(day, value) {
     this[day].isHoliday = value;
+    this[day] = {
+      ...this[day],
+      arriveTime: { hour: "09", minute: "00" },
+      leaveTime: { hour: "18", minute: "00" },
+      isBanchaAM: false,
+      isBanchaPM: false,
+    };
   },
 
   getWorkDays() {
     return [this.mon, this.tue, this.wed, this.thu, this.fri];
+  },
+
+  reset() {
+    const days = ["mon", "tue", "wed", "thu", "fri"];
+    days.map(
+      (day) =>
+        (this[day] = {
+          ...this[day],
+          arriveTime: { hour: "09", minute: "00" },
+          leaveTime: { hour: "18", minute: "00" },
+          isBanchaAM: false,
+          isBanchaPM: false,
+          isHoliday: false,
+        })
+    );
   },
 
   getTotalWorkTime() {
@@ -77,17 +112,17 @@ export const workState = observable({
   },
 
   getOverWorkTime() {
-    return this.totalWorkTime - 144000;
+    return this.totalWorkTime - FOURTY_HOURS;
   },
 
   getNecessaryWorkTime() {
-    return 144000 - this.totalWorkTime;
+    return FOURTY_HOURS - this.totalWorkTime;
   },
 
   getResult() {
     const parsedTotalTime = parseSecondsToTimeString(this.totalWorkTime);
 
-    if (this.totalTime >= 144000) {
+    if (this.totalTime >= FOURTY_HOURS) {
       const overWorkTime = this.getOverWorkTime();
       return [parsedTotalTime, overWorkTime];
     } else {

@@ -7,6 +7,7 @@ const Main = () => {
 
   const handleClickExcute = () => {
     const result = workState.getTotalWorkTime();
+    console.log(workState);
     console.log(result);
   };
 

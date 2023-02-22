@@ -6,7 +6,6 @@ import { workState } from "../../store";
 
 const TimeTable = observer(() => {
   const workDays = workState.getWorkDays();
-  const handleClickResetInputs = () => {};
 
   return (
     <ComponentWrapper>
@@ -19,13 +18,14 @@ const TimeTable = observer(() => {
             dayCode={workDay.dayCode}
             arriveTime={workDay.arriveTime}
             leaveTime={workDay.leaveTime}
-            isBancha={workDay.isBancha}
+            isBanchaAM={workDay.isBanchaAM}
+            isBanchaPM={workDay.isBanchaPM}
             isHoliday={workDay.isHoliday}
           />
         ))}
       </TableContainer>
       <ButtonGroup>
-        <ResetBtn onClick={handleClickResetInputs}>reset</ResetBtn>
+        <ResetBtn onClick={() => workState.reset()}>reset</ResetBtn>
         <AutoBtn>auto</AutoBtn>
       </ButtonGroup>
     </ComponentWrapper>

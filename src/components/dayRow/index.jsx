@@ -9,7 +9,8 @@ const DayRow = ({
   dayCode,
   arriveTime,
   leaveTime,
-  isBancha,
+  isBanchaAM,
+  isBanchaPM,
   isHoliday,
 }) => {
   const handleChangeHour = (e) => {
@@ -38,8 +39,12 @@ const DayRow = ({
       });
   };
 
-  const handleChangeIsBancha = (e) => {
-    workState.setIsBancha(dayCode, e.target.checked);
+  const handleChangeIsBanchaAM = (e) => {
+    workState.setIsBanchaAM(dayCode, e.target.checked);
+  };
+
+  const handleChangeIsBanchaPM = (e) => {
+    workState.setIsBanchaPM(dayCode, e.target.checked);
   };
 
   const handleChangeIsHoliday = (e) => {
@@ -64,16 +69,22 @@ const DayRow = ({
         disabled={isHoliday}
       />
       <CheckboxInput
-        name="isBancha"
-        onChange={handleChangeIsBancha}
-        checked={isBancha}
+        name="isBanchaAM"
+        onChange={handleChangeIsBanchaAM}
+        checked={isBanchaAM}
         disabled={isHoliday}
-      ></CheckboxInput>
+      />
+      <CheckboxInput
+        name="isBanchaPM"
+        onChange={handleChangeIsBanchaPM}
+        checked={isBanchaPM}
+        disabled={isHoliday}
+      />
       <CheckboxInput
         name="isHoliday"
         onChange={handleChangeIsHoliday}
         checked={isHoliday}
-      ></CheckboxInput>
+      />
     </ComponentWrapper>
   );
 };

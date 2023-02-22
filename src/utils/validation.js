@@ -16,7 +16,7 @@ export const isValidHour = (value) => {
 };
 
 export const isValidMinute = (value) => {
-  const minute = +value``;
+  const minute = +value;
   if (minute < 0 || minute > 59) return false;
   return true;
 };
