@@ -1,10 +1,7 @@
 import { observable } from "mobx";
-import {
-  getTodayWorkTimeInSeconds,
-  parseSecondsToTimeString,
-} from "../utils/time";
+import { getTodayWorkTime } from "../utils/time";
 
-const FOURTY_HOURS = 144000;
+const WEEK_DUTY_WORKTIME = 144000;
 
 export const workState = observable({
   mon: {
@@ -53,8 +50,6 @@ export const workState = observable({
     isHoliday: false,
   },
 
-  totalWorkTime: 0,
-
   setArriveTime(day, value) {
     this[day].arriveTime = { ...this[day].arriveTime, ...value };
   },
@@ -65,12 +60,12 @@ export const workState = observable({
 
   setIsBanchaAM(day, value) {
     this[day].isBanchaAM = value;
-    this[day].isBanchaPM = !value;
+    if (this[day].isBanchaPM) this[day].isBanchaPM = !value;
   },
 
   setIsBanchaPM(day, value) {
     this[day].isBanchaPM = value;
-    this[day].isBanchaAM = !value;
+    if (this[day].isBanchaAM) this[day].isBanchaAM = !value;
   },
 
   setIsHoliday(day, value) {
@@ -105,29 +100,22 @@ export const workState = observable({
 
   getTotalWorkTime() {
     const workDays = this.getWorkDays();
-    const totalWorkTime = workDays
-      .map((todayWorkTime) => getTodayWorkTimeInSeconds(todayWorkTime))
+    return workDays
+      .map((todayWorkTime) => getTodayWorkTime(todayWorkTime))
       .reduce((acc, cur) => acc + cur, 0);
-    return totalWorkTime;
   },
 
-  getOverWorkTime() {
-    return this.totalWorkTime - FOURTY_HOURS;
-  },
-
-  getNecessaryWorkTime() {
-    return FOURTY_HOURS - this.totalWorkTime;
-  },
-
-  getResult() {
-    const parsedTotalTime = parseSecondsToTimeString(this.totalWorkTime);
-
-    if (this.totalTime >= FOURTY_HOURS) {
-      const overWorkTime = this.getOverWorkTime();
-      return [parsedTotalTime, overWorkTime];
-    } else {
-      const neccessaryWorkTime = this.getNecessaryWorkTime();
-      return [parsedTotalTime, neccessaryWorkTime];
-    }
+  getResultDetail() {
+    const totalWorkTime = this.getTotalWorkTime();
+    const timeDiffrence = totalWorkTime - WEEK_DUTY_WORKTIME;
+    const isComplteDuty = timeDiffrence >= 0;
+    return {
+      totalWorkTime,
+      overWorkTime: isComplteDuty ? timeDiffrence : 0,
+      requiredWorkTime: isComplteDuty ? 0 : Math.abs(timeDiffrence),
+      frase: isComplteDuty
+        ? "고생했다 티붕아~ 어여 드가라~"
+        : "아이고 티붕아 니 지금 어데갈라카노?",
+    };
   },
 });

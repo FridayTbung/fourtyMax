@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 import { workState } from "../../store";
 import { isNumeric, isValidHour, isValidMinute } from "../../utils/validation";
@@ -39,6 +40,32 @@ const DayRow = ({
       });
   };
 
+  const handleBlurHour = (e) => {
+    const { value: hour, name: inputName } = e.target;
+    if (hour.length !== 1) return;
+    if (inputName === "arriveTime")
+      workState.setArriveTime(dayCode, {
+        hour: `0${hour}`,
+      });
+    else if (inputName === "leaveTime")
+      workState.setLeaveTime(dayCode, {
+        hour: `0${hour}`,
+      });
+  };
+
+  const handleBlurMinute = (e) => {
+    const { value: minute, name: inputName } = e.target;
+    if (minute.length !== 1) return;
+    if (inputName === "arriveTime")
+      workState.setArriveTime(dayCode, {
+        minute: `0${minute}`,
+      });
+    else if (inputName === "leaveTime")
+      workState.setLeaveTime(dayCode, {
+        minute: `0${minute}`,
+      });
+  };
+
   const handleChangeIsBanchaAM = (e) => {
     workState.setIsBanchaAM(dayCode, e.target.checked);
   };
@@ -58,6 +85,8 @@ const DayRow = ({
         name="arriveTime"
         onChangeHour={handleChangeHour}
         onChangeMinute={handleChangeMinute}
+        onBlurHour={handleBlurHour}
+        onBlurMinute={handleBlurMinute}
         value={arriveTime}
         disabled={isHoliday}
       />
@@ -65,6 +94,8 @@ const DayRow = ({
         name="leaveTime"
         onChangeHour={handleChangeHour}
         onChangeMinute={handleChangeMinute}
+        onBlurHour={handleBlurHour}
+        onBlurMinute={handleBlurMinute}
         value={leaveTime}
         disabled={isHoliday}
       />

@@ -1,14 +1,20 @@
+import { observer } from "mobx-react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { workState } from "../../store";
+import { validateExcuteError } from "../../utils/validation";
+import ErrorMsg from "./errorMsg";
 import TimeTable from "./timeTable";
 
-const Main = () => {
-  // const [resultText, setResultText] = useState("");
+const Main = observer(() => {
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  const handleClickExcute = () => {
-    const result = workState.getTotalWorkTime();
-    console.log(workState);
-    console.log(result);
+  const handleClickExecuteButton = () => {
+    const errMsg = validateExcuteError(workState);
+    if (!errMsg) navigate("/result");
+    else setError(errMsg);
   };
 
   return (
@@ -16,10 +22,13 @@ const Main = () => {
       <TimeTableArea>
         <TimeTable />
       </TimeTableArea>
-      <ExecuteBtn onClick={handleClickExcute}>계산하기</ExecuteBtn>
+      <ExecuteBtn onClick={handleClickExecuteButton}>계산하기</ExecuteBtn>
+      <ErrorMsgArea>
+        <ErrorMsg error={error} />
+      </ErrorMsgArea>
     </PageWrapper>
   );
-};
+});
 
 export default Main;
 
@@ -38,3 +47,5 @@ const ExecuteBtn = styled.button`
   height: 5%;
   padding: 0.5rem;
 `;
+
+const ErrorMsgArea = styled.div``;

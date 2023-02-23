@@ -1,6 +1,18 @@
 import styled from "styled-components";
 
-const TimeInput = ({ name, value, onChangeHour, onChangeMinute, disabled }) => {
+const TimeInput = ({
+  name,
+  value,
+  onChangeHour,
+  onChangeMinute,
+  onBlurHour,
+  onBlurMinute,
+  disabled,
+}) => {
+  const handleFocusInput = (e) => {
+    e.target.select();
+  };
+
   return (
     <TimeInputWrapper>
       <TimeInputField
@@ -8,6 +20,8 @@ const TimeInput = ({ name, value, onChangeHour, onChangeMinute, disabled }) => {
         name={name}
         value={value.hour}
         onChange={onChangeHour}
+        onFocus={handleFocusInput}
+        onBlur={onBlurHour}
         disabled={disabled}
         maxLength="2"
         pattern="[0-9]*"
@@ -18,6 +32,8 @@ const TimeInput = ({ name, value, onChangeHour, onChangeMinute, disabled }) => {
         name={name}
         value={value.minute}
         onChange={onChangeMinute}
+        onFocus={handleFocusInput}
+        onBlur={onBlurMinute}
         disabled={disabled}
         maxLength="2"
         pattern="[0-9]*"
@@ -38,6 +54,7 @@ const TimeInputWrapper = styled.div`
 
 const TimeInputField = styled.input`
   width: 30px;
+
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
     -webkit-appearance: none;
