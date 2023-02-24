@@ -14,16 +14,15 @@ export const isValidMinute = (value) => {
   return true;
 };
 
-export const isValidWorkTime = (todayWorkState) => {
-  const { arriveTime, leaveTime } = todayWorkState;
+export const isChronicleTime = (arriveTime, leaveTime) => {
   const parsedArriveTime = parseTimeStringToSeconds(arriveTime);
   const parsedLeaveTime = parseTimeStringToSeconds(leaveTime);
   if (parsedArriveTime >= parsedLeaveTime) return false;
   return true;
 };
 
-export const isNotBlank = (todayWorkState) => {
-  const { arriveTime, leaveTime } = todayWorkState;
+export const isNotEmptyValue = (dailyWork) => {
+  const { arriveTime, leaveTime } = dailyWork;
   if (
     !arriveTime.hour ||
     !arriveTime.minute ||
@@ -32,17 +31,4 @@ export const isNotBlank = (todayWorkState) => {
   )
     return false;
   return true;
-};
-
-export const validateExcuteError = (workState) => {
-  const days = ["mon", "tue", "wed", "thu", "fri"];
-  const errorMsg = days.map((day) => {
-    const isValidValue = isValidWorkTime(workState[day]);
-    const isNotEmpty = isNotBlank(workState[day]);
-
-    if (!isValidValue) return "퇴근시간이 출근시간보다 빠를 수 업습니다";
-    else if (!isNotEmpty) return "입력되지 않은 값이 있습니다";
-    else return null;
-  });
-  return errorMsg;
 };

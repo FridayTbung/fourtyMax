@@ -1,7 +1,6 @@
-import { useEffect } from "react";
 import styled from "styled-components";
 import { workState } from "../../store";
-import { isNumeric, isValidHour, isValidMinute } from "../../utils/validation";
+import { isChronicleTime } from "../../utils/validation";
 import CheckboxInput from "./checkboxInput";
 import TimeInput from "./timeInput";
 
@@ -14,57 +13,41 @@ const DayRow = ({
   isBanchaPM,
   isHoliday,
 }) => {
-  const handleChangeHour = (e) => {
-    const { value: hour, name: inputName } = e.target;
-    if (!(isNumeric(hour) && isValidHour(hour))) return;
-    if (inputName === "arriveTime") {
+  const handleChangeTime = {
+    arriveHour: (value) =>
       workState.setArriveTime(dayCode, {
-        hour,
-      });
-    } else if (inputName === "leaveTime")
+        hour: value,
+      }),
+    leaveHour: (value) =>
       workState.setLeaveTime(dayCode, {
-        hour,
-      });
+        hour: value,
+      }),
+    arriveMinute: (value) =>
+      workState.setArriveTime(dayCode, {
+        minute: value,
+      }),
+    leaveMinute: (value) =>
+      workState.setLeaveTime(dayCode, {
+        minute: value,
+      }),
   };
 
-  const handleChangeMinute = (e) => {
-    const { value: minute, name: inputName } = e.target;
-    if (!(isNumeric(minute) && isValidMinute(minute))) return;
-    if (inputName === "arriveTime")
-      workState.setArriveTime(dayCode, {
-        minute,
-      });
-    else if (inputName === "leaveTime")
-      workState.setLeaveTime(dayCode, {
-        minute,
-      });
+  const fillEmptyTime = {
+    arriveHour: (value) =>
+      workState.setArriveTime(dayCode, { hour: `0${value}` }),
+    leaveHour: (value) =>
+      workState.setLeaveTime(dayCode, { hour: `0${value}` }),
+    arriveMinute: (value) =>
+      workState.setArriveTime(dayCode, { minute: `0${value}` }),
+    leaveMinute: (value) =>
+      workState.setArriveTime(dayCode, { minute: `0${value}` }),
   };
 
-  const handleBlurHour = (e) => {
-    const { value: hour, name: inputName } = e.target;
-    if (hour.length !== 1) return;
-    if (inputName === "arriveTime")
-      workState.setArriveTime(dayCode, {
-        hour: `0${hour}`,
-      });
-    else if (inputName === "leaveTime")
-      workState.setLeaveTime(dayCode, {
-        hour: `0${hour}`,
-      });
-  };
-
-  const handleBlurMinute = (e) => {
-    const { value: minute, name: inputName } = e.target;
-    if (minute.length !== 1) return;
-    if (inputName === "arriveTime")
-      workState.setArriveTime(dayCode, {
-        minute: `0${minute}`,
-      });
-    else if (inputName === "leaveTime")
-      workState.setLeaveTime(dayCode, {
-        minute: `0${minute}`,
-      });
-  };
+  // const handleChangeCheckbox = {
+  //   isBanchaAM : (value) =>   workState.setIsBanchaAM(dayCode, value),
+  //   isBanchaPM : (value) => workState.setIsBanchaPM(dayCode, value),
+  //   isHoliday : (value) => workState.setIsHoliday(dayCode, value)
+  // }
 
   const handleChangeIsBanchaAM = (e) => {
     workState.setIsBanchaAM(dayCode, e.target.checked);
@@ -83,19 +66,21 @@ const DayRow = ({
       <Day>{day}</Day>
       <TimeInput
         name="arriveTime"
-        onChangeHour={handleChangeHour}
-        onChangeMinute={handleChangeMinute}
-        onBlurHour={handleBlurHour}
-        onBlurMinute={handleBlurMinute}
+        onChangeHour={handleChangeTime.arriveHour}
+        onChangeMinute={handleChangeTime.arriveMinute}
+        fillEmptyHour={fillEmptyTime.arriveHour}
+        fillEmptyMinute={fillEmptyTime.arriveMinute}
+        isChronicleTime={isChronicleTime(arriveTime, leaveTime)}
         value={arriveTime}
         disabled={isHoliday}
       />
       <TimeInput
         name="leaveTime"
-        onChangeHour={handleChangeHour}
-        onChangeMinute={handleChangeMinute}
-        onBlurHour={handleBlurHour}
-        onBlurMinute={handleBlurMinute}
+        onChangeHour={handleChangeTime.leaveHour}
+        onChangeMinute={handleChangeTime.leaveMinute}
+        fillEmptyHour={fillEmptyTime.leaveHour}
+        fillEmptyMinute={fillEmptyTime.leaveMinute}
+        isChronicleTime={isChronicleTime(arriveTime, leaveTime)}
         value={leaveTime}
         disabled={isHoliday}
       />

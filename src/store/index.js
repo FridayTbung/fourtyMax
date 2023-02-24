@@ -1,5 +1,5 @@
 import { observable } from "mobx";
-import { getTodayWorkTime } from "../utils/time";
+import { getDailyWorkTime } from "../utils/time";
 
 const WEEK_DUTY_WORKTIME = 144000;
 
@@ -79,7 +79,7 @@ export const workState = observable({
     };
   },
 
-  getWorkDays() {
+  getDailyWorks() {
     return [this.mon, this.tue, this.wed, this.thu, this.fri];
   },
 
@@ -99,23 +99,23 @@ export const workState = observable({
   },
 
   getTotalWorkTime() {
-    const workDays = this.getWorkDays();
-    return workDays
-      .map((todayWorkTime) => getTodayWorkTime(todayWorkTime))
+    const dailyWorks = this.getDailyWorks();
+    return dailyWorks
+      .map((dailyWork) => getDailyWorkTime(dailyWork))
       .reduce((acc, cur) => acc + cur, 0);
   },
 
   getResultDetail() {
     const totalWorkTime = this.getTotalWorkTime();
     const timeDiffrence = totalWorkTime - WEEK_DUTY_WORKTIME;
-    const isComplteDuty = timeDiffrence >= 0;
+    const isCompleteDuty = timeDiffrence >= 0;
     return {
       totalWorkTime,
-      overWorkTime: isComplteDuty ? timeDiffrence : 0,
-      requiredWorkTime: isComplteDuty ? 0 : Math.abs(timeDiffrence),
-      frase: isComplteDuty
-        ? "고생했다 티붕아~ 어여 드가라~"
-        : "아이고 티붕아 니 지금 어데갈라카노?",
+      overWorkTime: isCompleteDuty ? timeDiffrence : 0,
+      requiredWorkTime: isCompleteDuty ? 0 : Math.abs(timeDiffrence),
+      frase: isCompleteDuty
+        ? "고생했다 티붕아~ 어여 들어가~"
+        : "아이고 티붕아.. 니 지금 어데갈라카노?",
     };
   },
 });

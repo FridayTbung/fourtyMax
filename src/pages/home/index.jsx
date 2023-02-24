@@ -1,31 +1,21 @@
 import { observer } from "mobx-react";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { workState } from "../../store";
-import { validateExcuteError } from "../../utils/validation";
 import ErrorMsg from "./errorMsg";
 import TimeTable from "./timeTable";
 
 const Main = observer(() => {
-  const [error, setError] = useState("");
   const navigate = useNavigate();
-
-  const handleClickExecuteButton = () => {
-    const errMsg = validateExcuteError(workState);
-    if (!errMsg) navigate("/result");
-    else setError(errMsg);
-  };
 
   return (
     <PageWrapper>
       <TimeTableArea>
         <TimeTable />
       </TimeTableArea>
-      <ExecuteBtn onClick={handleClickExecuteButton}>계산하기</ExecuteBtn>
-      <ErrorMsgArea>
+      <ExecuteBtn onClick={() => navigate("/result")}>계산하기</ExecuteBtn>
+      {/* <ErrorMsgArea>
         <ErrorMsg error={error} />
-      </ErrorMsgArea>
+      </ErrorMsgArea> */}
     </PageWrapper>
   );
 });

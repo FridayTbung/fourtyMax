@@ -14,25 +14,24 @@ export const parseSecondsToTimeString = (time) => {
   return minute ? `${hour}시간 ${minute}분` : `${hour}시간`;
 };
 
-const calculateBaseWorkTime = (todayWorkTime) => {
-  const parsedArriveTime = parseTimeStringToSeconds(todayWorkTime.arriveTime);
-  const parsedLeaveTime = parseTimeStringToSeconds(todayWorkTime.leaveTime);
+const getBaseWorkTime = (dailyWork) => {
+  const parsedArriveTime = parseTimeStringToSeconds(dailyWork.arriveTime);
+  const parsedLeaveTime = parseTimeStringToSeconds(dailyWork.leaveTime);
   const baseWorkTime =
-    todayWorkTime.leaveTime >= EIGHT_O_CLOCK
+    dailyWork.leaveTime >= EIGHT_O_CLOCK
       ? parsedLeaveTime - parsedArriveTime - MEAL_TIME * 2
       : parsedLeaveTime - parsedArriveTime - MEAL_TIME;
   return baseWorkTime;
 };
 
-const calculateBancha = (todayWorkTime, baseWorkTime) => {
-  if (todayWorkTime.isBanchaAM)
-    return baseWorkTime + HALF_DAY_WORKTIME + MEAL_TIME;
-  else if (todayWorkTime.isBanchaPM) return baseWorkTime + HALF_DAY_WORKTIME;
+const getWorkTimeWithBancha = (dailyWork, baseWorkTime) => {
+  if (dailyWork.isBanchaAM) return baseWorkTime + HALF_DAY_WORKTIME + MEAL_TIME;
+  else if (dailyWork.isBanchaPM) return baseWorkTime + HALF_DAY_WORKTIME;
 };
 
-export const getTodayWorkTime = (todayWorkTime) => {
-  const baseWorkTime = calculateBaseWorkTime(todayWorkTime);
-  return todayWorkTime.isBanchaAM || todayWorkTime.isBanchaPM
-    ? calculateBancha(todayWorkTime, baseWorkTime)
+export const getDailyWorkTime = (dailyWork) => {
+  const baseWorkTime = getBaseWorkTime(dailyWork);
+  return dailyWork.isBanchaAM || dailyWork.isBanchaPM
+    ? getWorkTimeWithBancha(dailyWork, baseWorkTime)
     : baseWorkTime;
 };

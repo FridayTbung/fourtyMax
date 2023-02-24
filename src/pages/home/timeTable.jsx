@@ -5,22 +5,21 @@ import DayRow from "../../components/dayRow";
 import { workState } from "../../store";
 
 const TimeTable = observer(() => {
-  const workDays = workState.getWorkDays();
-
+  const dailyWorks = workState.getDailyWorks();
   return (
     <ComponentWrapper>
       <TableContainer>
         <TableHead />
-        {workDays.map((workDay) => (
+        {dailyWorks.map((dailyWork) => (
           <DayRow
-            key={workDay.dayCode}
-            day={workDay.day}
-            dayCode={workDay.dayCode}
-            arriveTime={workDay.arriveTime}
-            leaveTime={workDay.leaveTime}
-            isBanchaAM={workDay.isBanchaAM}
-            isBanchaPM={workDay.isBanchaPM}
-            isHoliday={workDay.isHoliday}
+            key={dailyWork.dayCode}
+            day={dailyWork.day}
+            dayCode={dailyWork.dayCode}
+            arriveTime={dailyWork.arriveTime}
+            leaveTime={dailyWork.leaveTime}
+            isBanchaAM={dailyWork.isBanchaAM}
+            isBanchaPM={dailyWork.isBanchaPM}
+            isHoliday={dailyWork.isHoliday}
           />
         ))}
       </TableContainer>
