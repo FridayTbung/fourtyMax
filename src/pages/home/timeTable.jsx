@@ -6,6 +6,10 @@ import { workState } from "../../store";
 
 const TimeTable = observer(() => {
   const dailyWorks = workState.getDailyWorks();
+
+  const handleClickReset = () => {
+    workState.reset();
+  };
   return (
     <ComponentWrapper>
       <TableContainer>
@@ -24,8 +28,7 @@ const TimeTable = observer(() => {
         ))}
       </TableContainer>
       <ButtonGroup>
-        <ResetBtn onClick={() => workState.reset()}>reset</ResetBtn>
-        <AutoBtn>auto</AutoBtn>
+        <ResetBtn onClick={handleClickReset}>reset</ResetBtn>
       </ButtonGroup>
     </ComponentWrapper>
   );
@@ -45,5 +48,3 @@ const ButtonGroup = styled.div`
 `;
 
 const ResetBtn = styled.button``;
-
-const AutoBtn = styled.button``;

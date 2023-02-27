@@ -1,21 +1,20 @@
 import { observer } from "mobx-react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import ErrorMsg from "./errorMsg";
 import TimeTable from "./timeTable";
 
 const Main = observer(() => {
   const navigate = useNavigate();
 
+  const handleClickCalculate = () => {
+    navigate("/result");
+  };
   return (
     <PageWrapper>
       <TimeTableArea>
         <TimeTable />
       </TimeTableArea>
-      <ExecuteBtn onClick={() => navigate("/result")}>계산하기</ExecuteBtn>
-      {/* <ErrorMsgArea>
-        <ErrorMsg error={error} />
-      </ErrorMsgArea> */}
+      <CalculateBtn onClick={handleClickCalculate}>계산하기</CalculateBtn>
     </PageWrapper>
   );
 });
@@ -32,10 +31,8 @@ const PageWrapper = styled.div`
 
 const TimeTableArea = styled.div``;
 
-const ExecuteBtn = styled.button`
+const CalculateBtn = styled.button`
   width: cal(100% - 10px);
   height: 5%;
   padding: 0.5rem;
 `;
-
-const ErrorMsgArea = styled.div``;

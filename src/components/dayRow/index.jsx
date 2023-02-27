@@ -54,7 +54,6 @@ const DayRow = ({
     const parsedLeaveTime = parseTimeStringToSeconds(leaveTime);
     return parsedArriveTime < parsedLeaveTime;
   };
-
   return (
     <ComponentWrapper>
       <Day>{day}</Day>

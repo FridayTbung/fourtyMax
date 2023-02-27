@@ -46,9 +46,8 @@ const TimeInput = ({
   const handleFocusInput = (e) => {
     e.target.select();
   };
-
   return (
-    <TimeInputWrapper>
+    <ComponentWrapper>
       <TimeInputField
         ref={hourInputRef}
         type="text"
@@ -75,13 +74,13 @@ const TimeInput = ({
         pattern="[0-9]*"
       />
       <span>분</span>
-    </TimeInputWrapper>
+    </ComponentWrapper>
   );
 };
 
 export default TimeInput;
 
-const TimeInputWrapper = styled.div`
+const ComponentWrapper = styled.div`
   flex: 1;
   display: flex;
   justify-content: center;

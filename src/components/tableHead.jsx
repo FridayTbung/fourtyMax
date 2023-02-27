@@ -8,7 +8,7 @@ const TableHead = () => {
       <LeaveTimeColumn>퇴근시간</LeaveTimeColumn>
       <IsBanchaColumn>오전반차</IsBanchaColumn>
       <IsBanchaColumn>오후반차</IsBanchaColumn>
-      <IsHolidayColumn>휴가</IsHolidayColumn>
+      <IsHolidayColumn>휴가/휴일</IsHolidayColumn>
     </ComponentWrapper>
   );
 };

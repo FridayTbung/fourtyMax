@@ -10,7 +10,6 @@ const GlobalStyle = createGlobalStyle`
     --color-sub : #ffa800;
     --color-black : #e6e6ea;
     --color-font : #444444;
-
   }
 
 `;

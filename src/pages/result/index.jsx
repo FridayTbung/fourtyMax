@@ -5,12 +5,15 @@ import ResultDetail from "./resultDetail";
 const Result = () => {
   const navigate = useNavigate();
 
+  const handleClickGoBack = () => {
+    navigate(-1);
+  };
   return (
     <PageWrapper>
       <ResultArea>
         <ResultDetail />
       </ResultArea>
-      <GoBackBtn onClick={() => navigate(-1)}>다시 계산하기</GoBackBtn>
+      <GoBackBtn onClick={handleClickGoBack}>다시 계산하기</GoBackBtn>
     </PageWrapper>
   );
 };
