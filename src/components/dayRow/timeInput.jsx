@@ -29,7 +29,7 @@ const TimeInput = ({
 
   const handleBlurHour = () => {
     const hour = value.hour;
-    if (hour === "" || !isChronicleTime()) hourInputRef.current.focus(); // isChronicleTime false일때 입력 지우기
+    if (hour === "" || !isChronicleTime()) hourInputRef.current.focus(); // To Do: isChronicleTime false일때 입력 지우기
     if (hour.length === 1) {
       fillEmptyHour(hour);
     }

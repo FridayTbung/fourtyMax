@@ -1,10 +1,7 @@
 import styled from "styled-components";
 import { workState } from "../../store";
-// import { isChronicleTime } from "../../utils/validation";
-
 import CheckboxInput from "./checkboxInput";
 import TimeInput from "./timeInput";
-
 import { parseTimeStringToSeconds } from "../../utils/time";
 
 const DayRow = ({
@@ -46,26 +43,13 @@ const DayRow = ({
       workState.setArriveTime(dayCode, { minute: `0${value}` }),
   };
 
-  // const handleChangeCheckbox = {
-  //   isBanchaAM : (value) =>   workState.setIsBanchaAM(dayCode, value),
-  //   isBanchaPM : (value) => workState.setIsBanchaPM(dayCode, value),
-  //   isHoliday : (value) => workState.setIsHoliday(dayCode, value)
-  // }
-
-  const handleChangeIsBanchaAM = (e) => {
-    workState.setIsBanchaAM(dayCode, e.target.checked);
-  };
-
-  const handleChangeIsBanchaPM = (e) => {
-    workState.setIsBanchaPM(dayCode, e.target.checked);
-  };
-
-  const handleChangeIsHoliday = (e) => {
-    workState.setIsHoliday(dayCode, e.target.checked);
+  const updateCheckbox = {
+    isBanchaAM: (value) => workState.setIsBanchaAM(dayCode, value),
+    isBanchaPM: (value) => workState.setIsBanchaPM(dayCode, value),
+    isHoliday: (value) => workState.setIsHoliday(dayCode, value),
   };
 
   const isChronicleTime = (arriveTime, leaveTime) => {
-    console.log("check");
     const parsedArriveTime = parseTimeStringToSeconds(arriveTime);
     const parsedLeaveTime = parseTimeStringToSeconds(leaveTime);
     return parsedArriveTime < parsedLeaveTime;
@@ -96,19 +80,19 @@ const DayRow = ({
       />
       <CheckboxInput
         name="isBanchaAM"
-        onChange={handleChangeIsBanchaAM}
+        onChange={updateCheckbox.isBanchaAM}
         checked={isBanchaAM}
         disabled={isHoliday}
       />
       <CheckboxInput
         name="isBanchaPM"
-        onChange={handleChangeIsBanchaPM}
+        onChange={updateCheckbox.isBanchaPM}
         checked={isBanchaPM}
         disabled={isHoliday}
       />
       <CheckboxInput
         name="isHoliday"
-        onChange={handleChangeIsHoliday}
+        onChange={updateCheckbox.isHoliday}
         checked={isHoliday}
       />
     </ComponentWrapper>

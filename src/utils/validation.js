@@ -1,5 +1,3 @@
-import { parseTimeStringToSeconds } from "./time";
-
 export const isNumeric = (value) => !isNaN(value);
 
 export const isValidHour = (value) => {
@@ -11,13 +9,6 @@ export const isValidHour = (value) => {
 export const isValidMinute = (value) => {
   const minute = +value;
   if (minute < 0 || minute > 59) return false;
-  return true;
-};
-
-export const isChronicleTime = (arriveTime, leaveTime) => {
-  const parsedArriveTime = parseTimeStringToSeconds(arriveTime);
-  const parsedLeaveTime = parseTimeStringToSeconds(leaveTime);
-  if (parsedArriveTime >= parsedLeaveTime) return false;
   return true;
 };
 
