@@ -48,4 +48,5 @@ const GoBackBtn = styled.button`
   border-radius: 16px;
   border: none;
   cursor: pointer;
+  font-size: 18px;
 `;
