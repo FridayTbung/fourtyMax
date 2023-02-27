@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import { workState } from "../../store";
-import { isChronicleTime } from "../../utils/validation";
+// import { isChronicleTime } from "../../utils/validation";
+
 import CheckboxInput from "./checkboxInput";
 import TimeInput from "./timeInput";
+
+import { parseTimeStringToSeconds } from "../../utils/time";
 
 const DayRow = ({
   day,
@@ -13,7 +16,7 @@ const DayRow = ({
   isBanchaPM,
   isHoliday,
 }) => {
-  const handleChangeTime = {
+  const updateTime = {
     arriveHour: (value) =>
       workState.setArriveTime(dayCode, {
         hour: value,
@@ -61,26 +64,33 @@ const DayRow = ({
     workState.setIsHoliday(dayCode, e.target.checked);
   };
 
+  const isChronicleTime = (arriveTime, leaveTime) => {
+    console.log("check");
+    const parsedArriveTime = parseTimeStringToSeconds(arriveTime);
+    const parsedLeaveTime = parseTimeStringToSeconds(leaveTime);
+    return parsedArriveTime < parsedLeaveTime;
+  };
+
   return (
     <ComponentWrapper>
       <Day>{day}</Day>
       <TimeInput
         name="arriveTime"
-        onChangeHour={handleChangeTime.arriveHour}
-        onChangeMinute={handleChangeTime.arriveMinute}
-        fillEmptyHour={fillEmptyTime.arriveHour}
+        onChangeHour={updateTime["arriveHour"]}
+        onChangeMinute={updateTime["arriveMinute"]}
+        fillEmptyHour={fillEmptyTime["arriveHour"]}
         fillEmptyMinute={fillEmptyTime.arriveMinute}
-        isChronicleTime={isChronicleTime(arriveTime, leaveTime)}
+        isChronicleTime={() => isChronicleTime(arriveTime, leaveTime)}
         value={arriveTime}
         disabled={isHoliday}
       />
       <TimeInput
         name="leaveTime"
-        onChangeHour={handleChangeTime.leaveHour}
-        onChangeMinute={handleChangeTime.leaveMinute}
+        onChangeHour={updateTime["leaveHour"]}
+        onChangeMinute={updateTime["leaveMinute"]}
         fillEmptyHour={fillEmptyTime.leaveHour}
         fillEmptyMinute={fillEmptyTime.leaveMinute}
-        isChronicleTime={isChronicleTime(arriveTime, leaveTime)}
+        isChronicleTime={() => isChronicleTime(arriveTime, leaveTime)}
         value={leaveTime}
         disabled={isHoliday}
       />

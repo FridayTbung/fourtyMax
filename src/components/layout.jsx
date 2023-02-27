@@ -23,5 +23,4 @@ const PageWrapper = styled.div`
 const ContentArea = styled.div`
   width: 100%;
   height: 87%;
-  background-color: var(--color-main);
 `;
