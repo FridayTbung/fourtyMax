@@ -1,9 +1,8 @@
-import { observer } from "mobx-react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import TimeTable from "./timeTable";
 
-const Main = observer(() => {
+const Main = () => {
   const navigate = useNavigate();
 
   const handleClickCalculate = () => {
@@ -17,7 +16,7 @@ const Main = observer(() => {
       <CalculateBtn onClick={handleClickCalculate}>계산하기</CalculateBtn>
     </PageWrapper>
   );
-});
+};
 
 export default Main;
 

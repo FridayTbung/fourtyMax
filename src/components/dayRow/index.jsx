@@ -44,9 +44,9 @@ const DayRow = ({
   };
 
   const updateCheckbox = {
-    isBanchaAM: (value) => workState.setIsBanchaAM(dayCode, value),
-    isBanchaPM: (value) => workState.setIsBanchaPM(dayCode, value),
-    isHoliday: (value) => workState.setIsHoliday(dayCode, value),
+    isBanchaAM: () => workState.setIsBanchaAM(dayCode),
+    isBanchaPM: () => workState.setIsBanchaPM(dayCode),
+    isHoliday: () => workState.setIsHoliday(dayCode),
   };
 
   const isChronicleTime = (arriveTime, leaveTime) => {
