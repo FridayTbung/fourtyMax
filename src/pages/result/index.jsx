@@ -23,11 +23,30 @@ const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  background-color: #c9c9c9;
+  padding: 30px 20px;
+  align-items: center;
 `;
 
-const ResultArea = styled.div``;
+const ResultArea = styled.div`
+  width: 100%;
+  height: 274px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-white);
+  border-radius: 38px;
+  margin-bottom: 20px;
+`;
 
 const GoBackBtn = styled.button`
-  height: 5%;
+  width: 158px;
+  height: 44px;
   padding: 0.5rem;
+  background-color: var(--color-main);
+  color: var(--color-white);
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
 `;
