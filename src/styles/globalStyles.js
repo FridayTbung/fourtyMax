@@ -7,8 +7,8 @@ const GlobalStyle = createGlobalStyle`
   :root{
     --color-main : #2C2C47;
     --color-white : #ffffff;
-    --color-sub : #ffa800
-    --color-back : #e6e6ea;
+    --color-sub : #ffa800;
+    --color-black : #e6e6ea;
     --color-font : #44444;
 
   }

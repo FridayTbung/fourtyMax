@@ -1,9 +1,11 @@
 import styled from "styled-components";
-
+import { ReactComponent as Title } from "../asset/image/title.svg";
 const Header = () => {
   return (
     <ComponentWrapper>
-      <ServiceTitle>금요일의 티붕이</ServiceTitle>
+      <ServiceTitle>
+        <Title />
+      </ServiceTitle>
     </ComponentWrapper>
   );
 };
@@ -12,12 +14,11 @@ export default Header;
 
 const ComponentWrapper = styled.div`
   height: 13%;
-  background-color: white;
+  background-color: var(--color-main);
   padding: 0.5rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  box-shadow: 0 5px 5px -6px #777;
 `;
 
 const ServiceTitle = styled.div``;
