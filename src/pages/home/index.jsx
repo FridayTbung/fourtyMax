@@ -27,15 +27,23 @@ const PageWrapper = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
+  align-items: center;
 `;
 
-const TimeTableArea = styled.div``;
+const TimeTableArea = styled.div`
+  width: 90%;
+  height: fit-contents;
+  margin-bottom: 2rem;
+`;
 
 const ExecuteBtn = styled.button`
-  width: cal(100% - 10px);
-  height: 5%;
-  padding: 0.5rem;
+  width: 35%;
+  height: 6%;
+  border: none;
+  background-color: var(--color-main);
+  color: var(--color-white);
+  font-size: var(--font-size-18);
+  font-weight: 700;
+  border-radius: 1rem;
 `;
-
 const ErrorMsgArea = styled.div``;
