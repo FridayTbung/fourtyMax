@@ -27,17 +27,15 @@ const ResultDetail = observer(() => {
 export default ResultDetail;
 
 const ComponentWrapper = styled.div`
-  width: 391px;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 `;
 
 const ResultDetailRow = styled.div`
-  font-size: 18px;
+  font-size: var(--font-size-18);
   font-weight: 600;
   span {
     color: var(--color-sub);
@@ -50,6 +48,6 @@ const ResultFrase = styled.div`
   justify-content: center;
   margin-top: 20px;
   font-weight: 700;
-  font-size: 22px;
+  font-size: var(--font-size-22);
   color: var(--color-main);
 `;

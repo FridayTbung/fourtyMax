@@ -18,15 +18,17 @@ export default TableHead;
 const ComponentWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
-  height: 5%;
-  border: 1px solid black;
+  height: 40px;
+  // background-color: red;
+  border-bottom: 1px solid var(--color-grayB3);
+
   div {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%;
-    border-right: 1px solid black;
+    // height: 100%;
+    font-size: var(--font-size-14);
+    color: var(--color-font);
   }
 
   div:last-child {
@@ -47,9 +49,9 @@ const LeaveTimeColumn = styled.div`
 `;
 
 const IsBanchaColumn = styled.div`
-  flex: 1;
+  flex: 1.1;
 `;
 
 const IsHolidayColumn = styled.div`
-  flex: 1;
+  flex: 1.1;
 `;

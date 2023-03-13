@@ -13,7 +13,7 @@ const Header = () => {
 export default Header;
 
 const ComponentWrapper = styled.div`
-  height: 18%;
+  height: 15%;
   background-color: var(--color-main);
   padding: 0.5rem;
   display: flex;

@@ -22,31 +22,32 @@ const PageWrapper = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
-  background-color: #c9c9c9;
-  padding: 30px 20px;
   align-items: center;
 `;
 
 const ResultArea = styled.div`
-  width: 100%;
+  width: 87%;
   height: 274px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--color-white);
-  border-radius: 38px;
-  margin-bottom: 20px;
+  border-radius: 3rem;
+  margin: 2rem 0;
 `;
 
 const GoBackBtn = styled.button`
-  width: 158px;
-  height: 44px;
-  padding: 0.5rem;
+  width: 35%;
+  height: 6%;
+  max-height: 60px;
+  border: none;
   background-color: var(--color-main);
   color: var(--color-white);
-  border-radius: 16px;
-  border: none;
+  border-radius: 1rem;
   cursor: pointer;
-  font-size: 18px;
+  font-size: var(--font-size-18);
+  font-weight: 700;
+  &:hover {
+    cursor: pointer;
+  }
 `;

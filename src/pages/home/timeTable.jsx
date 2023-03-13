@@ -40,7 +40,7 @@ const ComponentWrapper = styled.div`
   margin-top: 3rem;
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  padding: 2rem 2rem;
 `;
 
 const TableContainer = styled.div``;
@@ -57,7 +57,7 @@ const ButtonGroup = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   align-items: center;
 `;
 
@@ -68,6 +68,7 @@ const Btn = styled.button`
   color: var(--color-grayA6);
   cursor: pointer;
 
-  :hover {
+  &:hover {
+    cursor: pointer;
   }
 `;

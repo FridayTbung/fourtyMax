@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import ErrorMsg from "./errorMsg";
 import TimeTable from "./timeTable";
+import MainImgSource from "../../asset/image/mainImg.svg";
 
 const Main = observer(() => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const Main = observer(() => {
       {/* <ErrorMsgArea>
         <ErrorMsg error={error} />
       </ErrorMsgArea> */}
+      <MainImage>{/* <MainImgSource /> */}</MainImage>
     </PageWrapper>
   );
 });
@@ -28,10 +30,11 @@ const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 `;
 
 const TimeTableArea = styled.div`
-  width: 90%;
+  width: 87%;
   height: fit-contents;
   margin-bottom: 2rem;
 `;
@@ -39,11 +42,26 @@ const TimeTableArea = styled.div`
 const ExecuteBtn = styled.button`
   width: 35%;
   height: 6%;
+  max-height: 60px;
   border: none;
   background-color: var(--color-main);
   color: var(--color-white);
   font-size: var(--font-size-18);
   font-weight: 700;
   border-radius: 1rem;
+  &:hover {
+    cursor: pointer;
+  }
+  z-index: 10;
+`;
+
+const MainImage = styled.div`
+  background-image: url(${MainImgSource});
+  width: 250px;
+  height: 250px;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: 10px;
+  right: 30px;
 `;
 const ErrorMsgArea = styled.div``;
