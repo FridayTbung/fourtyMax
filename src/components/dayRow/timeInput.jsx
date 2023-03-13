@@ -32,7 +32,7 @@ const TimeInput = ({
     if (hour === "" || !isChronicleTime()) {
       hourInputRef.current.focus();
       if (hour) hourInputRef.current.value = "";
-    }
+    } // 좀 더 예쁘게 짜보기
     if (hour.length === 1) {
       fillEmptyHour(hour);
     }
