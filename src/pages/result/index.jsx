@@ -1,3 +1,4 @@
+import { observer } from "mobx-react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useState } from "react";
@@ -6,20 +7,29 @@ import goHome from "../../asset/image/goHome.svg";
 import notYet from "../../asset/image/mainImg.svg";
 import { workState } from "../../store";
 
-const Result = () => {
+const Result = observer(() => {
   const navigate = useNavigate();
+  const result = workState.getResult();
   const [isOver, setIsOver] = useState(false);
 
+  const handleClickGoBack = () => {
+    navigate(-1);
+  };
   return (
     <PageWrapper>
       <ResultArea>
-        <ResultDetail setIsOver={setIsOver} />
+        <ResultDetail setIsOver={setIsOver} result={result} />
+        <ResultText>
+          {result.isCompleteDuty
+            ? "고생했다 티붕아~ 어여 들어가~"
+            : "아이고 티붕아.. 니 지금 어데갈라카노?"}
+        </ResultText>
       </ResultArea>
-      <GoBackBtn onClick={() => navigate(-1)}>다시 계산하기</GoBackBtn>
+      <GoBackBtn onClick={handleClickGoBack}>다시 계산하기</GoBackBtn>
       <ResultImage imgSrc={isOver ? goHome : notYet}></ResultImage>
     </PageWrapper>
   );
-};
+});
 
 export default Result;
 
@@ -36,6 +46,7 @@ const ResultArea = styled.div`
   width: 87%;
   height: 274px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: var(--color-white);
@@ -52,12 +63,22 @@ const GoBackBtn = styled.button`
   color: var(--color-white);
   border-radius: 1rem;
   cursor: pointer;
+  font-size: 18px;
   font-size: var(--font-size-18);
   font-weight: 700;
   &:hover {
     cursor: pointer;
   }
   z-index: 10;
+`;
+
+const ResultText = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--color-main);
 `;
 
 const ResultImage = styled.div`

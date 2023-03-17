@@ -64,13 +64,14 @@ export const workState = observable({
     if (this[day].isBanchaPM) this[day].isBanchaPM = !value;
   },
 
-  setIsBanchaPM(day, value) {
-    this[day].isBanchaPM = value;
-    if (this[day].isBanchaAM) this[day].isBanchaAM = !value;
+  setIsBanchaPM(day) {
+    const curVal = this[day].isBanchaPM;
+    this[day].isBanchaPM = !curVal;
+    if (this[day].isBanchaAM) this[day].isBanchaAM = !curVal;
   },
 
-  setIsHoliday(day, value) {
-    this[day].isHoliday = value;
+  setIsHoliday(day) {
+    this[day].isHoliday = !this[day].isHoliday;
     this[day] = {
       ...this[day],
       arriveTime: { hour: "09", minute: "00" },
@@ -106,7 +107,7 @@ export const workState = observable({
       .reduce((acc, cur) => acc + cur, 0);
   },
 
-  getResultDetail() {
+  getResult() {
     const totalWorkTime = this.getTotalWorkTime();
     const timeDiffrence = totalWorkTime - WEEK_DUTY_WORKTIME;
     const isCompleteDuty = timeDiffrence >= 0;
@@ -114,9 +115,7 @@ export const workState = observable({
       totalWorkTime,
       overWorkTime: isCompleteDuty ? timeDiffrence : 0,
       requiredWorkTime: isCompleteDuty ? 0 : Math.abs(timeDiffrence),
-      frase: isCompleteDuty
-        ? "고생했다 티붕아~ 어여 들어가~"
-        : "아이고 티붕아.. 니 지금 어데갈라카노?",
+      isCompleteDuty,
     };
   },
 });

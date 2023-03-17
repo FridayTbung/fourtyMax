@@ -1,13 +1,14 @@
-import { observer } from "mobx-react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import ErrorMsg from "./errorMsg";
 import TimeTable from "./timeTable";
 import MainImgSource from "../../asset/image/mainImg.svg";
 
-const Main = observer(() => {
+const Main = () => {
   const navigate = useNavigate();
 
+  const handleClickCalculate = () => {
+    navigate("/result");
+  };
   return (
     <PageWrapper>
       <TimeTableArea>
@@ -20,7 +21,7 @@ const Main = observer(() => {
       <MainImage></MainImage>
     </PageWrapper>
   );
-});
+};
 
 export default Main;
 

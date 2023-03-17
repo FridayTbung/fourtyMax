@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const CheckboxInput = ({ name, onChange, checked, disabled }) => {
   return (
-    <CheckboxInputArea>
+    <ComponentWrapper>
       <Checkbox
         type="checkbox"
         name={name}

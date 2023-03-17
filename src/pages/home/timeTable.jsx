@@ -6,6 +6,10 @@ import { workState } from "../../store";
 
 const TimeTable = observer(() => {
   const dailyWorks = workState.getDailyWorks();
+
+  const handleClickReset = () => {
+    workState.reset();
+  };
   return (
     <ComponentWrapper>
       <TableContainer>

@@ -30,7 +30,10 @@ const TimeInput = ({
 
   const handleBlurHour = () => {
     const hour = value.hour;
-    if (hour === "" || !isChronicleTime()) hourInputRef.current.focus(); // To Do: isChronicleTime false일때 입력 지우기
+    if (hour === "" || !isChronicleTime()) {
+      hourInputRef.current.focus();
+      if (hour) hourInputRef.current.value = "";
+    } // 좀 더 예쁘게 짜보기
     if (hour.length === 1) {
       fillEmptyHour(hour);
     }
@@ -38,7 +41,10 @@ const TimeInput = ({
 
   const handleBlurMinute = () => {
     const minute = value.minute;
-    if (minute === "" || !isChronicleTime()) minuteInputRef.current.focus();
+    if (minute === "" || !isChronicleTime()) {
+      minuteInputRef.current.focus();
+      if (minute) hourInputRef.current.value = "";
+    }
     if (minute.length === 1) {
       fillEmptyMinute(minute);
     }
@@ -47,7 +53,6 @@ const TimeInput = ({
   const handleFocusInput = (e) => {
     e.target.select();
   };
-
   return (
     <TimeInputWrapper>
       <TimeBox>
