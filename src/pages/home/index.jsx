@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import TimeTable from "./timeTable";
+import MainImgSource from "../../asset/image/mainImg.svg";
 
 const Main = () => {
   const navigate = useNavigate();
@@ -13,7 +14,11 @@ const Main = () => {
       <TimeTableArea>
         <TimeTable />
       </TimeTableArea>
-      <CalculateBtn onClick={handleClickCalculate}>계산하기</CalculateBtn>
+      <ExecuteBtn onClick={() => navigate("/result")}>계산하기</ExecuteBtn>
+      {/* <ErrorMsgArea>
+        <ErrorMsg error={error} />
+      </ErrorMsgArea> */}
+      <MainImage></MainImage>
     </PageWrapper>
   );
 };
@@ -25,13 +30,39 @@ const PageWrapper = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
+  align-items: center;
+  position: relative;
 `;
 
-const TimeTableArea = styled.div``;
-
-const CalculateBtn = styled.button`
-  width: cal(100% - 10px);
-  height: 5%;
-  padding: 0.5rem;
+const TimeTableArea = styled.div`
+  width: 87%;
+  height: fit-contents;
+  margin-bottom: 2rem;
 `;
+
+const ExecuteBtn = styled.button`
+  width: 35%;
+  height: 6%;
+  max-height: 60px;
+  border: none;
+  background-color: var(--color-main);
+  color: var(--color-white);
+  font-size: var(--font-size-18);
+  font-weight: 700;
+  border-radius: 1rem;
+  &:hover {
+    cursor: pointer;
+  }
+  z-index: 10;
+`;
+
+const MainImage = styled.div`
+  background-image: url(${MainImgSource});
+  width: 250px;
+  height: 250px;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: 10px;
+  right: 30px;
+`;
+const ErrorMsgArea = styled.div``;

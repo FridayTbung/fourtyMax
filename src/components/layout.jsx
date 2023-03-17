@@ -17,10 +17,10 @@ const PageWrapper = styled.div`
   max-width: 600px;
   height: 100vh;
   overflow: hidden;
-  background-color: white;
 `;
 
 const ContentArea = styled.div`
   width: 100%;
-  height: 87%;
+  height: 85%;
+  background-color: var(--color-background);
 `;

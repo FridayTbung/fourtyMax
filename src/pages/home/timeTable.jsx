@@ -28,7 +28,9 @@ const TimeTable = observer(() => {
         ))}
       </TableContainer>
       <ButtonGroup>
-        <ResetBtn onClick={handleClickReset}>reset</ResetBtn>
+        <Btn onClick={() => workState.reset()}>reset</Btn>
+        <Line></Line>
+        <Btn>auto</Btn>
       </ButtonGroup>
     </ComponentWrapper>
   );
@@ -37,14 +39,40 @@ const TimeTable = observer(() => {
 export default TimeTable;
 
 const ComponentWrapper = styled.div`
-  margin: 1rem;
+  border-radius: 3rem;
+  background-color: var(--color-white);
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 2rem;
 `;
 
 const TableContainer = styled.div``;
 
+const Line = styled.div`
+  width: 0.5px;
+  height: 18px;
+  background-color: var(--color-grayA6);
+`;
+
 const ButtonGroup = styled.div`
   display: flex;
   gap: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+  align-items: center;
 `;
 
-const ResetBtn = styled.button``;
+const Btn = styled.button`
+  border: none;
+  background-color: transparent;
+  font-size: var(--font-size-18);
+  color: var(--color-grayA6);
+  cursor: pointer;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;

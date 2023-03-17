@@ -44,9 +44,9 @@ const DayRow = ({
   };
 
   const updateCheckbox = {
-    isBanchaAM: () => workState.setIsBanchaAM(dayCode),
-    isBanchaPM: () => workState.setIsBanchaPM(dayCode),
-    isHoliday: () => workState.setIsHoliday(dayCode),
+    isBanchaAM: (e) => workState.setIsBanchaAM(dayCode, e.target.checked),
+    isBanchaPM: (e) => workState.setIsBanchaPM(dayCode, e.target.checked),
+    isHoliday: (e) => workState.setIsHoliday(dayCode, e.target.checked),
   };
 
   const isChronicleTime = (arriveTime, leaveTime) => {
@@ -104,13 +104,14 @@ const ComponentWrapper = styled.div`
   display: flex;
   padding: 1rem 0;
   align-items: center;
-  border: 1px solid black;
-  width: cal(100% - 10px);
-  height: 3%;
+  width: 100%;
 `;
 
 const Day = styled.div`
   flex: 1;
   display: flex;
   justify-content: center;
+  align-items: center;
+  font-color: var(--color-font);
+  font-size: var(--font-size-14);
 `;

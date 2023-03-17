@@ -1,12 +1,16 @@
 import { observer } from "mobx-react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useState } from "react";
+import ResultDetail from "./resultDetail";
+import goHome from "../../asset/image/goHome.svg";
+import notYet from "../../asset/image/mainImg.svg";
 import { workState } from "../../store";
-import ResultDetail from "./detail";
 
 const Result = observer(() => {
   const navigate = useNavigate();
   const result = workState.getResult();
+  const [isOver, setIsOver] = useState(false);
 
   const handleClickGoBack = () => {
     navigate(-1);
@@ -14,7 +18,7 @@ const Result = observer(() => {
   return (
     <PageWrapper>
       <ResultArea>
-        <ResultDetail result={result} />
+        <ResultDetail setIsOver={setIsOver} result={result} />
         <ResultText>
           {result.isCompleteDuty
             ? "고생했다 티붕아~ 어여 들어가~"
@@ -22,6 +26,7 @@ const Result = observer(() => {
         </ResultText>
       </ResultArea>
       <GoBackBtn onClick={handleClickGoBack}>다시 계산하기</GoBackBtn>
+      <ResultImage imgSrc={isOver ? goHome : notYet}></ResultImage>
     </PageWrapper>
   );
 });
@@ -33,34 +38,38 @@ const PageWrapper = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
-  background-color: #c9c9c9;
-  padding: 30px 20px;
   align-items: center;
+  position: relative;
 `;
 
 const ResultArea = styled.div`
-  width: 100%;
+  width: 87%;
   height: 274px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: var(--color-white);
-  border-radius: 38px;
-  margin-bottom: 20px;
+  border-radius: 3rem;
+  margin: 2rem 0;
 `;
 
 const GoBackBtn = styled.button`
-  width: 158px;
-  height: 44px;
-  padding: 0.5rem;
+  width: 35%;
+  height: 6%;
+  max-height: 60px;
+  border: none;
   background-color: var(--color-main);
   color: var(--color-white);
-  border-radius: 16px;
-  border: none;
+  border-radius: 1rem;
   cursor: pointer;
   font-size: 18px;
+  font-size: var(--font-size-18);
+  font-weight: 700;
+  &:hover {
+    cursor: pointer;
+  }
+  z-index: 10;
 `;
 
 const ResultText = styled.div`
@@ -70,4 +79,15 @@ const ResultText = styled.div`
   font-weight: 700;
   font-size: 22px;
   color: var(--color-main);
+`;
+
+const ResultImage = styled.div`
+  background-image: url(${(props) => props.imgSrc});
+  width: 400px;
+  height: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: 10px;
+  right: auto;
 `;

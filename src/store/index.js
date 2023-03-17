@@ -58,10 +58,10 @@ export const workState = observable({
     this[day].leaveTime = { ...this[day].leaveTime, ...value };
   },
 
-  setIsBanchaAM(day) {
-    const curVal = this[day].isBanchaAM;
-    this[day].isBanchaAM = !curVal;
-    if (this[day].isBanchaPM) this[day].isBanchaPM = !curVal;
+  setIsBanchaAM(day, value) {
+    console.log(value);
+    this[day].isBanchaAM = value;
+    if (this[day].isBanchaPM) this[day].isBanchaPM = !value;
   },
 
   setIsBanchaPM(day) {
