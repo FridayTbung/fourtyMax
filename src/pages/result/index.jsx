@@ -1,16 +1,22 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useState } from "react";
 import ResultDetail from "./resultDetail";
+import goHome from "../../asset/image/goHome.svg";
+import notYet from "../../asset/image/mainImg.svg";
+import { workState } from "../../store";
 
 const Result = () => {
   const navigate = useNavigate();
+  const [isOver, setIsOver] = useState(false);
 
   return (
     <PageWrapper>
       <ResultArea>
-        <ResultDetail />
+        <ResultDetail setIsOver={setIsOver} />
       </ResultArea>
       <GoBackBtn onClick={() => navigate(-1)}>다시 계산하기</GoBackBtn>
+      <ResultImage imgSrc={isOver ? goHome : notYet}></ResultImage>
     </PageWrapper>
   );
 };
@@ -23,6 +29,7 @@ const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 `;
 
 const ResultArea = styled.div`
@@ -50,4 +57,16 @@ const GoBackBtn = styled.button`
   &:hover {
     cursor: pointer;
   }
+  z-index: 10;
+`;
+
+const ResultImage = styled.div`
+  background-image: url(${(props) => props.imgSrc});
+  width: 400px;
+  height: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: 10px;
+  right: auto;
 `;

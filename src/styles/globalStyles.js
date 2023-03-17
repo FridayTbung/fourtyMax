@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
     --color-grayA6 : #a6a6a6;
     --color-background : #E6E6EA;
     --color-grayB3 : #B3B3B3;
+    --color-border : #6A6A8C;
     
     --font-size-12 : 12px;
     --font-size-14 : 14px;

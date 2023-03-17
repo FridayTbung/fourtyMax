@@ -17,7 +17,7 @@ const Main = observer(() => {
       {/* <ErrorMsgArea>
         <ErrorMsg error={error} />
       </ErrorMsgArea> */}
-      <MainImage>{/* <MainImgSource /> */}</MainImage>
+      <MainImage></MainImage>
     </PageWrapper>
   );
 });
