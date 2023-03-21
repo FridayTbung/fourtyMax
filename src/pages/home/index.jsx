@@ -27,7 +27,7 @@ const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px;
+  padding: 20px;
 `;
 
 const TimeTableArea = styled.div`
@@ -36,10 +36,10 @@ const TimeTableArea = styled.div`
 `;
 
 const ExecuteBtn = styled.button`
-  width: 35%;
+  width: fit-content;
   height: 6%;
   max-height: 50px;
-  padding: 10px;
+  padding: 10px 40px;
   border: none;
   background-color: var(--color-main);
   color: var(--color-white);
@@ -54,8 +54,8 @@ const ExecuteBtn = styled.button`
 
 const MainImage = styled.div`
   background-image: url(${MainImgSource});
-  width: 50%;
-  height: 50%;
+  width: 200px;
+  height: 200px;
   aspect-ratio: 1/1;
   background-repeat: no-repeat;
   background-size: contain;

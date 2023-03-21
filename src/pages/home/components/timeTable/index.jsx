@@ -44,7 +44,11 @@ const ComponentWrapper = styled.div`
   padding: 2rem 2rem;
 `;
 
-const TableContainer = styled.div``;
+const TableContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
 
 const ButtonWrapper = styled.div`
   display: flex;
@@ -59,7 +63,7 @@ const ButtonWrapper = styled.div`
 const ResetButton = styled.button`
   border: none;
   background-color: transparent;
-  font-size: var(--font-size-18);
+  font-size: var(--font-size-14);
   color: var(--color-grayA6);
   cursor: pointer;
 

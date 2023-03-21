@@ -102,7 +102,6 @@ export default TableRow;
 
 const ComponentWrapper = styled.div`
   display: flex;
-  padding: 10px 0;
   width: 100%;
 `;
 

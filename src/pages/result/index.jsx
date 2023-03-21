@@ -38,7 +38,7 @@ const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px;
+  padding: 20px;
 `;
 
 const ResultArea = styled.div`
@@ -54,10 +54,10 @@ const ResultArea = styled.div`
 `;
 
 const GoBackBtn = styled.button`
-  width: 35%;
+  width: fit-content;
   height: 6%;
   max-height: 50px;
-  padding: 10px;
+  padding: 10px 20px;
   border: none;
   background-color: var(--color-main);
   color: var(--color-white);
@@ -82,8 +82,8 @@ const ResultText = styled.div`
 
 const ResultImage = styled.div`
   background-image: url(${(props) => props.imgSrc});
-  width: 400px;
-  height: 400px;
+  width: 200px;
+  height: 200px;
   background-size: contain;
   background-repeat: no-repeat;
 `;
