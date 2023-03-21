@@ -4,6 +4,21 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
   ${reset}
 
+  *{
+    box-sizing: border-box;
+  }
+
+  body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: grey;
+      margin: 0;
+      padding: 0;
+      font-family: "Pretendard";
+  
+    }
+
   :root{
     --color-main : #2C2C47;
     --color-white : #ffffff;

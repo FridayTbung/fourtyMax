@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const CheckboxInput = ({ name, onChange, checked, disabled }) => {
   return (
-    <CheckboxInputArea>
+    <ComponentWrapper>
       <Checkbox
         type="checkbox"
         name={name}
@@ -10,13 +10,13 @@ const CheckboxInput = ({ name, onChange, checked, disabled }) => {
         checked={checked}
         disabled={disabled}
       />
-    </CheckboxInputArea>
+    </ComponentWrapper>
   );
 };
 
 export default CheckboxInput;
 
-const CheckboxInputArea = styled.label`
+const ComponentWrapper = styled.label`
   flex: 1.1;
   display: flex;
   justify-content: center;

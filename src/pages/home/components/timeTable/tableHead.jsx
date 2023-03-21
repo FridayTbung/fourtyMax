@@ -19,14 +19,12 @@ const ComponentWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
   height: 40px;
-  // background-color: red;
   border-bottom: 1px solid var(--color-grayB3);
 
   div {
     display: flex;
     justify-content: center;
     align-items: center;
-    // height: 100%;
     font-size: var(--font-size-14);
     color: var(--color-font);
   }
@@ -41,11 +39,13 @@ const DayColumn = styled.div`
 `;
 
 const ArriveTimeColumn = styled.div`
-  flex: 2;
+  flex: 1;
+  margin-right: 10px;
 `;
 
 const LeaveTimeColumn = styled.div`
-  flex: 2;
+  flex: 1;
+  margin-right: 10px;
 `;
 
 const IsBanchaColumn = styled.div`

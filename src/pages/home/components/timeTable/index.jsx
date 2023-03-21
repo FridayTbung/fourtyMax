@@ -1,8 +1,8 @@
 import { observer } from "mobx-react";
 import styled from "styled-components";
-import TableHead from "../../components/tableHead";
-import DayRow from "../../components/dayRow";
-import { workState } from "../../store";
+import TableHead from "./tableHead";
+import TableRow from "./tableRow";
+import { workState } from "../../../../store";
 
 const TimeTable = observer(() => {
   const dailyWorks = workState.getDailyWorks();
@@ -15,7 +15,7 @@ const TimeTable = observer(() => {
       <TableContainer>
         <TableHead />
         {dailyWorks.map((dailyWork) => (
-          <DayRow
+          <TableRow
             key={dailyWork.dayCode}
             day={dailyWork.day}
             dayCode={dailyWork.dayCode}
@@ -27,11 +27,9 @@ const TimeTable = observer(() => {
           />
         ))}
       </TableContainer>
-      <ButtonGroup>
-        <Btn onClick={() => workState.reset()}>reset</Btn>
-        <Line></Line>
-        <Btn>auto</Btn>
-      </ButtonGroup>
+      <ButtonWrapper>
+        <ResetButton onClick={handleClickReset}>reset</ResetButton>
+      </ButtonWrapper>
     </ComponentWrapper>
   );
 });
@@ -41,7 +39,6 @@ export default TimeTable;
 const ComponentWrapper = styled.div`
   border-radius: 3rem;
   background-color: var(--color-white);
-  margin-top: 3rem;
   display: flex;
   flex-direction: column;
   padding: 2rem 2rem;
@@ -49,13 +46,7 @@ const ComponentWrapper = styled.div`
 
 const TableContainer = styled.div``;
 
-const Line = styled.div`
-  width: 0.5px;
-  height: 18px;
-  background-color: var(--color-grayA6);
-`;
-
-const ButtonGroup = styled.div`
+const ButtonWrapper = styled.div`
   display: flex;
   gap: 1rem;
   width: 100%;
@@ -65,7 +56,7 @@ const ButtonGroup = styled.div`
   align-items: center;
 `;
 
-const Btn = styled.button`
+const ResetButton = styled.button`
   border: none;
   background-color: transparent;
   font-size: var(--font-size-18);

@@ -1,7 +1,11 @@
 import { useRef } from "react";
 import styled from "styled-components";
-import clock from "../../asset/icon/clock.svg";
-import { isNumeric, isValidHour, isValidMinute } from "../../utils/validation";
+import clock from "../../../../asset/icon/clock.svg";
+import {
+  isNumeric,
+  isValidHour,
+  isValidMinute,
+} from "../../../../utils/validation";
 
 const TimeInput = ({
   name,
@@ -54,52 +58,46 @@ const TimeInput = ({
     e.target.select();
   };
   return (
-    <TimeInputWrapper>
-      <TimeBox>
-        <TimeInputField
-          ref={hourInputRef}
-          type="text"
-          name={name}
-          value={value.hour}
-          onChange={handleChangeHour}
-          onFocus={handleFocusInput}
-          onBlur={handleBlurHour}
-          disabled={disabled}
-          maxLength="2"
-          pattern="[0-9]*"
-        />
-        <p>:</p>
-        <TimeInputField
-          ref={minuteInputRef}
-          type="text"
-          name={name}
-          value={value.minute}
-          onChange={handleChangeMinute}
-          onFocus={handleFocusInput}
-          onBlur={handleBlurMinute}
-          disabled={disabled}
-          maxLength="2"
-          pattern="[0-9]*"
-        />
-        <img alt="clock" src={clock} />
-      </TimeBox>
-    </TimeInputWrapper>
+    <ComponentWrapper>
+      <TimeInputField
+        ref={hourInputRef}
+        type="text"
+        name={name}
+        value={value.hour}
+        onChange={handleChangeHour}
+        onFocus={handleFocusInput}
+        onBlur={handleBlurHour}
+        disabled={disabled}
+        maxLength="2"
+        pattern="[0-9]*"
+      />
+      <p>:</p>
+      <TimeInputField
+        ref={minuteInputRef}
+        type="text"
+        name={name}
+        value={value.minute}
+        onChange={handleChangeMinute}
+        onFocus={handleFocusInput}
+        onBlur={handleBlurMinute}
+        disabled={disabled}
+        maxLength="2"
+        pattern="[0-9]*"
+      />
+      <img alt="clock" src={clock} />
+    </ComponentWrapper>
   );
 };
 
 export default TimeInput;
 
-const TimeInputWrapper = styled.div`
-  flex: 2;
+const ComponentWrapper = styled.div`
+  flex: 1;
+  margin-right: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const TimeBox = styled.div`
   border: 1px solid var(--color-grayA6);
-  width: 84px;
-  height: 25px;
   border-radius: 4px;
   display: flex;
   justify-content: center;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { parseSecondsToTimeString } from "../../utils/time";
+import { parseSecondsToTimeString } from "../../../utils/time";
 
 const Detail = ({ result }) => {
   const { totalWorkTime, overWorkTime, requiredWorkTime } = result;

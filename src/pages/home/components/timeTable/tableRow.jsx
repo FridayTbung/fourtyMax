@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { workState } from "../../store";
 import CheckboxInput from "./checkboxInput";
 import TimeInput from "./timeInput";
-import { parseTimeStringToSeconds } from "../../utils/time";
+import { workState } from "../../../../store";
+import { parseTimeStringToSeconds } from "../../../../utils/time";
 
-const DayRow = ({
+const TableRow = ({
   day,
   dayCode,
   arriveTime,
@@ -98,20 +98,19 @@ const DayRow = ({
   );
 };
 
-export default DayRow;
+export default TableRow;
 
 const ComponentWrapper = styled.div`
   display: flex;
-  padding: 1rem 0;
-  align-items: center;
+  padding: 10px 0;
   width: 100%;
 `;
 
 const Day = styled.div`
-  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-color: var(--color-font);
+  color: var(--color-font);
   font-size: var(--font-size-14);
+  flex: 1;
 `;

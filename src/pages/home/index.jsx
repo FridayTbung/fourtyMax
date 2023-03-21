@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import TimeTable from "./timeTable";
+import TimeTable from "./components/timeTable";
 import MainImgSource from "../../asset/image/mainImg.svg";
 
 const Main = () => {
@@ -14,11 +14,8 @@ const Main = () => {
       <TimeTableArea>
         <TimeTable />
       </TimeTableArea>
-      <ExecuteBtn onClick={() => navigate("/result")}>계산하기</ExecuteBtn>
-      {/* <ErrorMsgArea>
-        <ErrorMsg error={error} />
-      </ErrorMsgArea> */}
-      <MainImage></MainImage>
+      <ExecuteBtn onClick={handleClickCalculate}>계산하기</ExecuteBtn>
+      <MainImage />
     </PageWrapper>
   );
 };
@@ -27,23 +24,22 @@ export default Main;
 
 const PageWrapper = styled.div`
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
+  padding: 30px;
 `;
 
 const TimeTableArea = styled.div`
-  width: 87%;
-  height: fit-contents;
-  margin-bottom: 2rem;
+  width: 100%;
+  margin-bottom: 20px;
 `;
 
 const ExecuteBtn = styled.button`
   width: 35%;
   height: 6%;
-  max-height: 60px;
+  max-height: 50px;
+  padding: 10px;
   border: none;
   background-color: var(--color-main);
   color: var(--color-white);
@@ -58,11 +54,9 @@ const ExecuteBtn = styled.button`
 
 const MainImage = styled.div`
   background-image: url(${MainImgSource});
-  width: 250px;
-  height: 250px;
+  width: 50%;
+  height: 50%;
+  aspect-ratio: 1/1;
   background-repeat: no-repeat;
-  position: absolute;
-  bottom: 10px;
-  right: 30px;
+  background-size: contain;
 `;
-const ErrorMsgArea = styled.div``;

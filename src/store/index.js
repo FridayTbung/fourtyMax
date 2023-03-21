@@ -59,7 +59,6 @@ export const workState = observable({
   },
 
   setIsBanchaAM(day, value) {
-    console.log(value);
     this[day].isBanchaAM = value;
     if (this[day].isBanchaPM) this[day].isBanchaPM = !value;
   },

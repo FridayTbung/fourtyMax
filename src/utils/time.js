@@ -18,7 +18,7 @@ const getBaseWorkTime = (dailyWork) => {
   const parsedArriveTime = parseTimeStringToSeconds(dailyWork.arriveTime);
   const parsedLeaveTime = parseTimeStringToSeconds(dailyWork.leaveTime);
   const baseWorkTime =
-    dailyWork.leaveTime >= EIGHT_O_CLOCK
+    +dailyWork.leaveTime.hour >= EIGHT_O_CLOCK
       ? parsedLeaveTime - parsedArriveTime - MEAL_TIME * 2
       : parsedLeaveTime - parsedArriveTime - MEAL_TIME;
   return baseWorkTime;
