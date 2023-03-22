@@ -84,7 +84,7 @@ const TimeInput = ({
         maxLength="2"
         pattern="[0-9]*"
       />
-      <img alt="clock" src={clock} />
+      <ClockImg alt="clock" src={clock} />
     </ComponentWrapper>
   );
 };
@@ -131,6 +131,12 @@ const TimeInputField = styled.input`
   text-align: center;
 
   @media only screen and (max-width: 480px) {
-    font-size: 11px;
+    font-size: 8px;
+  }
+`;
+
+const ClockImg = styled.img`
+  @media only screen and (max-width: 480px) {
+    display: none;
   }
 `;
