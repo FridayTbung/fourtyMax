@@ -102,18 +102,17 @@ const ComponentWrapper = styled.div`
   justify-content: center;
   align-items: center;
   font-family: notoSansKr;
+
   img {
     width: 14px;
     height: 14px;
   }
-  span {
-    line-height: 20px;
-  }
+
   margin-right: 10px;
 `;
 
 const TimeInputField = styled.input`
-  width: 20px;
+  width: 30%;
   color: var(--color-font);
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
