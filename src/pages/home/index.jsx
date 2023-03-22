@@ -40,7 +40,7 @@ const TimeTableArea = styled.div`
 
 const ExecuteBtn = styled.button`
   width: fit-content;
-  height: 6%;
+  height: fit-content;
   max-height: 50px;
   padding: 10px 40px;
   border: none;

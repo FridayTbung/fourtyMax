@@ -56,7 +56,7 @@ const ResultArea = styled.div`
 
 const GoBackBtn = styled.button`
   width: fit-content;
-  height: 6%;
+  height: fit-content;
   max-height: 50px;
   padding: 10px 20px;
   border: none;
