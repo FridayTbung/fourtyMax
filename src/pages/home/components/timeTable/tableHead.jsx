@@ -38,12 +38,12 @@ const DayColumn = styled.div`
 `;
 
 const ArriveTimeColumn = styled.div`
-  flex: 1.1;
+  flex: 1.2;
   margin-right: 10px;
 `;
 
 const LeaveTimeColumn = styled.div`
-  flex: 1.1;
+  flex: 1.2;
   margin-right: 10px;
 `;
 

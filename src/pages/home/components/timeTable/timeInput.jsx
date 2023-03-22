@@ -92,7 +92,7 @@ const TimeInput = ({
 export default TimeInput;
 
 const ComponentWrapper = styled.div`
-  flex: 1.1;
+  flex: 1.2;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -124,4 +124,5 @@ const TimeInputField = styled.input`
     -moz-appearance: textfield;
   }
   border: none;
+  text-align: center;
 `;
