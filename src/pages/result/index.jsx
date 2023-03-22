@@ -34,11 +34,12 @@ const Result = observer(() => {
 export default Result;
 
 const PageWrapper = styled.div`
-  width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  background-color: var(--color-background);
 `;
 
 const ResultArea = styled.div`

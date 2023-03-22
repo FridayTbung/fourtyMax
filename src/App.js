@@ -1,18 +1,17 @@
 import { Routes, Route } from "react-router-dom";
 import styled from "styled-components";
-import Layout from "./components/layout";
+import Header from "./components/header";
 import Main from "./pages/home";
 import Result from "./pages/result";
 
 function App() {
   return (
     <AppContainer>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/result" element={<Result />} />
-        </Routes>
-      </Layout>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/result" element={<Result />} />
+      </Routes>
     </AppContainer>
   );
 }
@@ -20,8 +19,10 @@ function App() {
 export default App;
 
 const AppContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background-color: grey;
+  width: 100vw;
+  max-width: 700px;
+  max-height: 100vh;
+  padding: 0;
+  margin: 0;
+  background-color: #ffffff;
 `;

@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import TimeTable from "./components/timeTable";
 import MainImgSource from "../../asset/image/mainImg.svg";
+import Header from "../../components/header";
 
 const Main = () => {
   const navigate = useNavigate();
@@ -23,11 +24,13 @@ const Main = () => {
 export default Main;
 
 const PageWrapper = styled.div`
-  width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  overflow-x: hidden;
+  background-color: var(--color-background);
 `;
 
 const TimeTableArea = styled.div`
