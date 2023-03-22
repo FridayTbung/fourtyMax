@@ -19,7 +19,7 @@ const Result = observer(() => {
         <ResultDetail result={result} />
         <ResultText>
           {result.isCompleteDuty
-            ? "수고하셨습니다~ 얼른 가서 푹 쉬어요~!❤️ "
+            ? "🎉수고하셨습니다~ \n얼른 가서 푹 쉬어요~!❤️ "
             : "에...? 벌써 가시게요..?😅"}
         </ResultText>
       </ResultArea>
@@ -77,6 +77,9 @@ const ResultText = styled.div`
   font-weight: 700;
   font-size: 22px;
   color: var(--color-main);
+  text-align: center;
+  line-height: 120%;
+  white-space: pre-wrap;
 `;
 
 const ResultImage = styled.img`
