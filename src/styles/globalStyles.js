@@ -18,6 +18,8 @@ const GlobalStyle = createGlobalStyle`
       font-family: "Pretendard";
     }
 
+
+
   :root{
     --color-main : #2C2C47;
     --color-white : #ffffff;
@@ -36,7 +38,6 @@ const GlobalStyle = createGlobalStyle`
     --font-size-22 : 22px;
     --font-size-24 : 24px;
   }
-
 `;
 
 export default GlobalStyle;

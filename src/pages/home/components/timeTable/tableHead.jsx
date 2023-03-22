@@ -26,6 +26,10 @@ const ComponentWrapper = styled.div`
     align-items: center;
     font-size: var(--font-size-14);
     color: var(--color-font);
+
+    @media only screen and (max-width: 480px) {
+      font-size: 11px;
+    }
   }
 
   div:last-child {

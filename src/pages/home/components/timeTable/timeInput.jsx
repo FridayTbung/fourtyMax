@@ -102,13 +102,18 @@ const ComponentWrapper = styled.div`
   justify-content: center;
   align-items: center;
   font-family: notoSansKr;
-
   img {
     width: 14px;
     height: 14px;
   }
 
   margin-right: 10px;
+
+  p {
+    @media only screen and (max-width: 480px) {
+      font-size: 11px;
+    }
+  }
 `;
 
 const TimeInputField = styled.input`
@@ -124,4 +129,8 @@ const TimeInputField = styled.input`
   }
   border: none;
   text-align: center;
+
+  @media only screen and (max-width: 480px) {
+    font-size: 11px;
+  }
 `;

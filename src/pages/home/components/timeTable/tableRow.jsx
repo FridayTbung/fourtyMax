@@ -112,4 +112,8 @@ const Day = styled.div`
   align-items: center;
   color: var(--color-font);
   font-size: var(--font-size-14);
+
+  @media only screen and (max-width: 480px) {
+    font-size: 12px;
+  }
 `;
