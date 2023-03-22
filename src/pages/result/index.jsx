@@ -19,8 +19,8 @@ const Result = observer(() => {
         <ResultDetail result={result} />
         <ResultText>
           {result.isCompleteDuty
-            ? "고생했다 티붕아~ 어여 들어가~"
-            : "아이고 티붕아.. 니 지금 어데갈라카노?"}
+            ? "수고하셨습니다~ 얼른 가서 푹 쉬어요~!❤️ "
+            : "에...? 벌써 가시게요..?😅"}
         </ResultText>
       </ResultArea>
       <GoBackBtn onClick={handleClickGoBack}>다시 계산하기</GoBackBtn>

@@ -117,7 +117,7 @@ const ComponentWrapper = styled.div`
 `;
 
 const TimeInputField = styled.input`
-  width: 34%;
+  width: 35%;
   color: var(--color-font);
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
