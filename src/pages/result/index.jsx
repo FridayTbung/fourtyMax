@@ -24,9 +24,7 @@ const Result = observer(() => {
         </ResultText>
       </ResultArea>
       <GoBackBtn onClick={handleClickGoBack}>다시 계산하기</GoBackBtn>
-      <ResultImage
-        imgSrc={result.isCompleteDuty ? goHome : notYet}
-      ></ResultImage>
+      <ResultImage src={result.isCompleteDuty ? goHome : notYet}></ResultImage>
     </PageWrapper>
   );
 });
@@ -81,10 +79,6 @@ const ResultText = styled.div`
   color: var(--color-main);
 `;
 
-const ResultImage = styled.div`
-  background-image: url(${(props) => props.imgSrc});
-  width: 200px;
-  height: 200px;
-  background-size: contain;
-  background-repeat: no-repeat;
+const ResultImage = styled.img`
+  width: 50%;
 `;

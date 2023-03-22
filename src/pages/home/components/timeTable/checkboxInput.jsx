@@ -17,7 +17,7 @@ const CheckboxInput = ({ name, onChange, checked, disabled }) => {
 export default CheckboxInput;
 
 const ComponentWrapper = styled.label`
-  flex: 1.1;
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import TimeTable from "./components/timeTable";
 import MainImgSource from "../../asset/image/mainImg.svg";
-import Header from "../../components/header";
 
 const Main = () => {
   const navigate = useNavigate();
@@ -16,7 +15,7 @@ const Main = () => {
         <TimeTable />
       </TimeTableArea>
       <ExecuteBtn onClick={handleClickCalculate}>계산하기</ExecuteBtn>
-      <MainImage />
+      <MainImage src={MainImgSource} />
     </PageWrapper>
   );
 };
@@ -55,11 +54,6 @@ const ExecuteBtn = styled.button`
   z-index: 10;
 `;
 
-const MainImage = styled.div`
-  background-image: url(${MainImgSource});
-  width: 200px;
-  height: 200px;
-  aspect-ratio: 1/1;
-  background-repeat: no-repeat;
-  background-size: contain;
+const MainImage = styled.img`
+  width: 50%;
 `;

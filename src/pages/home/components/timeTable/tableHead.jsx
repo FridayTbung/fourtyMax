@@ -17,7 +17,6 @@ export default TableHead;
 
 const ComponentWrapper = styled.div`
   display: flex;
-  justify-content: space-evenly;
   height: 40px;
   border-bottom: 1px solid var(--color-grayB3);
 
@@ -35,23 +34,23 @@ const ComponentWrapper = styled.div`
 `;
 
 const DayColumn = styled.div`
-  flex: 1;
+  flex: 0.8;
 `;
 
 const ArriveTimeColumn = styled.div`
-  flex: 1;
+  flex: 1.1;
   margin-right: 10px;
 `;
 
 const LeaveTimeColumn = styled.div`
-  flex: 1;
+  flex: 1.1;
   margin-right: 10px;
 `;
 
 const IsBanchaColumn = styled.div`
-  flex: 1.1;
+  flex: 1;
 `;
 
 const IsHolidayColumn = styled.div`
-  flex: 1.1;
+  flex: 1;
 `;

@@ -106,10 +106,10 @@ const ComponentWrapper = styled.div`
 `;
 
 const Day = styled.div`
+  flex: 0.8;
   display: flex;
   justify-content: center;
   align-items: center;
   color: var(--color-font);
   font-size: var(--font-size-14);
-  flex: 1;
 `;

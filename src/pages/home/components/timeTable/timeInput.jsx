@@ -92,8 +92,7 @@ const TimeInput = ({
 export default TimeInput;
 
 const ComponentWrapper = styled.div`
-  flex: 1;
-  margin-right: 10px;
+  flex: 1.1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -110,6 +109,7 @@ const ComponentWrapper = styled.div`
   span {
     line-height: 20px;
   }
+  margin-right: 10px;
 `;
 
 const TimeInputField = styled.input`

@@ -41,7 +41,7 @@ const ComponentWrapper = styled.div`
   background-color: var(--color-white);
   display: flex;
   flex-direction: column;
-  padding: 2rem 2rem;
+  padding: 22px;
 `;
 
 const TableContainer = styled.div`
