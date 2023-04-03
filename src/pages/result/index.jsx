@@ -32,7 +32,7 @@ const Result = observer(() => {
 export default Result;
 
 const PageWrapper = styled.div`
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -7,6 +7,9 @@ import { workState } from "../../../../store";
 const TimeTable = observer(() => {
   const dailyWorks = workState.getDailyWorks();
 
+  const handleClickTims = () => {
+    window.open("https://tims.tmax.co.kr/", "_blank");
+  };
   const handleClickReset = () => {
     workState.reset();
   };
@@ -28,7 +31,8 @@ const TimeTable = observer(() => {
         ))}
       </TableContainer>
       <ButtonWrapper>
-        <ResetButton onClick={handleClickReset}>reset</ResetButton>
+        <TimsButton onClick={handleClickTims}>Tmax TIMS</TimsButton>
+        <ResetButton onClick={handleClickReset}>Reset</ResetButton>
       </ButtonWrapper>
     </ComponentWrapper>
   );
@@ -52,12 +56,20 @@ const TableContainer = styled.div`
 
 const ButtonWrapper = styled.div`
   display: flex;
-  gap: 1rem;
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 1rem;
   align-items: center;
+`;
+
+const TimsButton = styled.button`
+  border: none;
+  background-color: transparent;
+  font-size: var(--font-size-14);
+  color: var(--color-grayA6);
+  cursor: pointer;
 `;
 
 const ResetButton = styled.button`

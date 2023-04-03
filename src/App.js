@@ -1,17 +1,18 @@
 import { Routes, Route } from "react-router-dom";
 import styled from "styled-components";
-import Header from "./components/header";
+import Layout from "./components/layout";
 import Main from "./pages/home";
 import Result from "./pages/result";
 
 function App() {
   return (
     <AppContainer>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/result" element={<Result />} />
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/result" element={<Result />} />
+        </Routes>
+      </Layout>
     </AppContainer>
   );
 }
