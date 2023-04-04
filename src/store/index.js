@@ -63,10 +63,9 @@ export const workState = observable({
     if (this[day].isBanchaPM) this[day].isBanchaPM = !value;
   },
 
-  setIsBanchaPM(day) {
-    const curVal = this[day].isBanchaPM;
-    this[day].isBanchaPM = !curVal;
-    if (this[day].isBanchaAM) this[day].isBanchaAM = !curVal;
+  setIsBanchaPM(day, value) {
+    this[day].isBanchaPM = value;
+    if (this[day].isBanchaAM) this[day].isBanchaAM = !value;
   },
 
   setIsHoliday(day) {
