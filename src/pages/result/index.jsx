@@ -13,6 +13,7 @@ const Result = observer(() => {
   const handleClickGoBack = () => {
     navigate(-1);
   };
+
   return (
     <PageWrapper>
       <ResultArea>

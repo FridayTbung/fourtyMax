@@ -1,24 +1,28 @@
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import TimeTable from "./components/timeTable";
 import MainImgSource from "../../asset/image/mainImg.svg";
 import Caution from "./components/caution";
 
-const Main = () => {
+const Main = ({ allowResultPage }) => {
   const navigate = useNavigate();
 
   const handleClickCalculate = () => {
+    allowResultPage(true);
     navigate("/result");
   };
   return (
-    <PageWrapper>
-      <TimeTableArea>
-        <TimeTable />
-      </TimeTableArea>
-      <ExecuteBtn onClick={handleClickCalculate}>계산하기</ExecuteBtn>
-      <Caution />
-      <MainImage src={MainImgSource} />
-    </PageWrapper>
+    <>
+      <PageWrapper>
+        <TimeTableArea>
+          <TimeTable />
+        </TimeTableArea>
+        <ExecuteBtn onClick={handleClickCalculate}>계산하기</ExecuteBtn>
+        <Caution />
+        <MainImage src={MainImgSource} />
+      </PageWrapper>
+      <Outlet />
+    </>
   );
 };
 
